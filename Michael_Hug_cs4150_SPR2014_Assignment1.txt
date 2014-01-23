@@ -1,0 +1,17 @@
+/*
+ *Author : Michael Hug
+ *Author email : hmichae4@students.kennesaw.edu
+ *Student of Prof Gayler cs4150 Spr014
+ *Assignment 1 - to do problems 3, 5, 7d, 8, 10, 12, and 13 on pages 163 – 164 of the text
+ */
+ 
+3)
+<assign> → <id> = <expr>
+<id> → A | B | C
+<expr> →  <expr> * <term> | <term>
+<term> → <factor> + <term> | <factor>
+<factor> → ( <expr> ) | <id>
+
+5)
+<assign> → <expr> <boolean> <expr>
+<boolean> → && | || | ! | > | < | =
