@@ -1,2 +1,7 @@
 science.kennesaw.edu
 .metadata
+/project/nbproject/private/
+/project/build/
+/sampleProject/nbproject/private/
+/sampleproject/parsing/nbproject/private/
+/sampleproject/parsing/build/
