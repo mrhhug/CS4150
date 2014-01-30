@@ -1,4 +1,4 @@
-package projecttry2;
+package other;
 
 //used capital lettes because java wanted to interpret some method names as java reserved words
 public class keyword
@@ -176,11 +176,9 @@ public class keyword
     public static boolean isLexeme(String token)
     {
         boolean returnme = false;
-        if(lexAnal.id(token))
-            returnme = true;
-        else if(lexAnal.literal_integer(token))
-            returnme = true;
-        else if(lexAnal.assignment_operator(token))
+        
+        
+        if(lexAnal.assignment_operator(token))
             returnme = true;
         else if(lexAnal.le_operator(token))
             returnme = true;
@@ -194,7 +192,13 @@ public class keyword
             returnme = true;
         else if(lexAnal.ne_operator(token))
             returnme = true;
-        else if(lexAnal.add_operator(token))
+        
+        return returnme;
+    }
+    public static boolean isarithmatic(String token)
+    {
+        boolean returnme = false;
+        if(lexAnal.add_operator(token))
             returnme = true;
         else if(lexAnal.sub_operator(token))
             returnme = true;
