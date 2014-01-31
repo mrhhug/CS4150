@@ -57,75 +57,94 @@ public class tokenizer
     private Token newToken(String s, int lineNumber, int colNumber) throws aWildKeystrokeAppeared
     {
         Token t;
-        switch (s)
+        if(s.matches("[a-zA-Z]"))
+            t = new Token(s.charAt(0), lineNumber, colNumber);
+        else if(isInteger(s))
+            t = new Token(Integer.parseInt(s), lineNumber, colNumber);
+        else
         {
-            case "def":
-                t = new Token(DEF, lineNumber, colNumber);
-                break;
-            case "end":
-                t = new Token(END, lineNumber, colNumber);
-                break;
-            case "if":
-                t = new Token(IF, lineNumber, colNumber);
-                break;
-            case "then":
-                t = new Token(THEN, lineNumber, colNumber);
-                break;
-            case "else":
-                t = new Token(ELSE, lineNumber, colNumber);
-                break;
-            case "while":
-                t = new Token(WHILE, lineNumber, colNumber);
-                break;
-            case "do":
-                t = new Token(DO, lineNumber, colNumber);
-                break;
-            case "puts":
-                t = new Token(PUTS, lineNumber, colNumber);
-                break;
-            case "until":
-                t = new Token(UNTIL, lineNumber, colNumber);
-                break;
-            case "=":
-                t = new Token(ASSIGN, lineNumber, colNumber);
-                break;
-            case "<=":
-                t = new Token(LE, lineNumber, colNumber);
-                break;
-            case "<":
-                t = new Token(LT, lineNumber, colNumber);
-                break;
-            case ">=":
-                t = new Token(GE, lineNumber, colNumber);
-                break;
-            case ">":
-                t = new Token(GT, lineNumber, colNumber);
-                break;
-            case "==":
-                t = new Token(EQ, lineNumber, colNumber);
-                break;
-            case "/=":
-                t = new Token(NE, lineNumber, colNumber);
-                break;
-            case "+":
-                t = new Token(ADD, lineNumber, colNumber);
-                break;
-            case "-":
-                t = new Token(SUB, lineNumber, colNumber);
-                break;
-            case "*":
-                t = new Token(MUL, lineNumber, colNumber);
-                break;
-            case "/":
-                t = new Token(DIV, lineNumber, colNumber);
-                break;
-            default: 
-                throw new aWildKeystrokeAppeared(lineNumber, colNumber);
+            switch (s)
+            {
+                case "def":
+                    t = new Token(DEF, lineNumber, colNumber);
+                    break;
+                case "end":
+                    t = new Token(END, lineNumber, colNumber);
+                    break;
+                case "if":
+                    t = new Token(IF, lineNumber, colNumber);
+                    break;
+                case "then":
+                    t = new Token(THEN, lineNumber, colNumber);
+                    break;
+                case "else":
+                    t = new Token(ELSE, lineNumber, colNumber);
+                    break;
+                case "while":
+                    t = new Token(WHILE, lineNumber, colNumber);
+                    break;
+                case "do":
+                    t = new Token(DO, lineNumber, colNumber);
+                    break;
+                case "puts":
+                    t = new Token(PUTS, lineNumber, colNumber);
+                    break;
+                case "until":
+                    t = new Token(UNTIL, lineNumber, colNumber);
+                    break;
+                case "=":
+                    t = new Token(ASSIGN, lineNumber, colNumber);
+                    break;
+                case "<=":
+                    t = new Token(LE, lineNumber, colNumber);
+                    break;
+                case "<":
+                    t = new Token(LT, lineNumber, colNumber);
+                    break;
+                case ">=":
+                    t = new Token(GE, lineNumber, colNumber);
+                    break;
+                case ">":
+                    t = new Token(GT, lineNumber, colNumber);
+                    break;
+                case "==":
+                    t = new Token(EQ, lineNumber, colNumber);
+                    break;
+                case "/=":
+                    t = new Token(NE, lineNumber, colNumber);
+                    break;
+                case "+":
+                    t = new Token(ADD, lineNumber, colNumber);
+                    break;
+                case "-":
+                    t = new Token(SUB, lineNumber, colNumber);
+                    break;
+                case "*":
+                    t = new Token(MUL, lineNumber, colNumber);
+                    break;
+                case "/":
+                    t = new Token(DIV, lineNumber, colNumber);
+                    break;
+                default: 
+                    throw new aWildKeystrokeAppeared(lineNumber, colNumber);
+            }
         }
         return t;
     }
     public Queue<Token> getQueue()
     {
         return tokenList;
+    }
+    private boolean isInteger(String s)
+    {
+        boolean returnme = false;
+        try
+        {
+            Integer.parseInt(s);
+            returnme = true;
+        }
+        catch( NumberFormatException e )
+        { }
+        return returnme;
     }
 }

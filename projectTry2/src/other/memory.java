@@ -4,8 +4,7 @@ import tokenz.Token;
 
 public class memory 
 {
-    // primative int cannot be null
-    private final Integer mem[] = new Integer[52];
+    final Integer mem[] = new Integer[52];
     
     public void set(Token t, Integer i)
     {

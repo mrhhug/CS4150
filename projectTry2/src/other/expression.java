@@ -12,13 +12,13 @@ public class expression extends code_block
     expression() throws ExpressionExpectedException
     {
         t = tokenList.poll();
-        if(t.r!=null)
+        if(t.a!=null)
         {
             e = new expression();
             e2 = new expression();
         }
     }
-    Integer evaluate() throws UndefinedVariableException, DivideByZeroException
+    Integer evaluate() throws UndefinedVariableException, DivideByZeroException, RedRover
     {
         int returnme;
         if(t.li != null)
@@ -29,25 +29,27 @@ public class expression extends code_block
             returnme = evaluate(t, e, e2);
         return returnme;       
     }
-    static Integer evaluate(Token t, expression e, expression e2) throws UndefinedVariableException, DivideByZeroException
+    static Integer evaluate(Token t, expression e, expression e2) throws UndefinedVariableException, DivideByZeroException, RedRover
     {
-        Integer i = null;
-        switch(t.r)
+        Integer i;
+        switch(t.a)
         {
-            case ADD :
+            case ADD:
                 i = e.evaluate() + e2.evaluate();
                 break;
-            case SUB :
+            case SUB:
                 i = e.evaluate() - e2.evaluate();
                 break;
-            case MUL :
+            case MUL:
                 i = e.evaluate() * e2.evaluate();
                 break;
-            case DIV :
+            case DIV:
                 if(e2.evaluate()==0)
                     throw new DivideByZeroException(t);
                 i = e.evaluate() - e2.evaluate();
                 break;
+            default: 
+                    throw new RedRover(t.lineNumber,t.colNumber);
         }
         return i;
     }

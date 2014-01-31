@@ -11,12 +11,12 @@ public final class program
 {
     Queue<Token> tokenList;
     
-    program(tokenizer tokenizer) throws Noendkeywordexception, Nodefkeywordexception, AssignemntOperatorExpectedException, LiteralIntegerExpectedException, idExpectedException, StatementExpectedException, DivideByZeroException, RedRover, UndefinedVariableException
+    program(tokenizer tokenizer) throws Noendkeywordexception, Nodefkeywordexception, AssignemntOperatorExpectedException, LiteralIntegerExpectedException, idExpectedException, StatementExpectedException, DivideByZeroException, RedRover, UndefinedVariableException, ExpressionExpectedException, RelationalOperatorExpectedException, Nothenkeywordexception, Noelsekeywordexception
     {
         tokenList = tokenizer.getQueue();
         doit();
     }
-    void doit() throws Noendkeywordexception, Nodefkeywordexception, AssignemntOperatorExpectedException, LiteralIntegerExpectedException, idExpectedException, StatementExpectedException, DivideByZeroException, RedRover, UndefinedVariableException
+    void doit() throws Noendkeywordexception, Nodefkeywordexception, AssignemntOperatorExpectedException, LiteralIntegerExpectedException, idExpectedException, StatementExpectedException, DivideByZeroException, RedRover, UndefinedVariableException, ExpressionExpectedException, RelationalOperatorExpectedException, Nothenkeywordexception, Noelsekeywordexception
     {
         Token t;
         t = tokenList.poll();
