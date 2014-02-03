@@ -1,31 +1,37 @@
 package other;
 
-import java.util.Queue;
-import static tokenz.Keyword.IF;
-import static tokenz.Keyword.PUTS;
-import static tokenz.Keyword.UNTIL;
-import static tokenz.Keyword.WHILE;
+import static tokenz.Keyword.*;
 import tokenz.Token;
 
-public class code_block
+class code_block
 {
-    Queue<Token> tokenList;
-    memory mem;
-    
-    code_block() 
+    //final TokenList tl;
+    //final private memory mem;
+    class code_block() 
     {
-        mem = new memory();  
+        mem = new memory();
+        tl = new TokenList();
     }
     void trigger() throws AssignemntOperatorExpectedException, LiteralIntegerExpectedException, idExpectedException, StatementExpectedException, DivideByZeroException, RedRover, UndefinedVariableException, ExpressionExpectedException, RelationalOperatorExpectedException, Nothenkeywordexception, Noelsekeywordexception, Noendkeywordexception
     {
        Token t;
-       t = tokenList.poll();
+       t = tl.getNextToken();
        while(t.id!=null || t.k==IF || t.k==WHILE || t.k==PUTS || t.k==UNTIL)
-            new statement();
+            statement(t);
        //thjis needs to pass the keyword and then do more stuff.
     }
+    /*
     void passtokenList(Queue<Token> tokenList)
     {
         this.tokenList = tokenList;
     }
+    public Token polltokenList()
+    {
+        return tokenList.poll();
+    }
+    public Token peektokenList()
+    {
+        return tokenList.peek();
+    }
+    */
 }

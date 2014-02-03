@@ -6,10 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-import java.util.LinkedList;
-import java.util.Queue;
-
-
 
 import static tokenz.Keyword.*;
 import static tokenz.Relational_Operator.*;
@@ -20,11 +16,11 @@ import tokenz.Token;
 
 public class tokenizer 
 {
-    Queue<Token> tokenList;
+    private final TokenList tl;
     
     tokenizer(String fileName) throws FileNotFoundException, IOException, aWildKeystrokeAppeared
     {
-        tokenList = new LinkedList<>();
+        tl = new TokenList();
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName),Charset.forName("UTF-8")));
         String buffer = "";
@@ -37,7 +33,7 @@ public class tokenizer
             if(Character.isWhitespace(c))
             {
                 if(!buffer.isEmpty())
-                    tokenList.add(newToken(buffer,lineNumber,colNumber));
+                    tl.add(newToken(buffer,lineNumber,colNumber));
                 buffer = "";
             }
             else
@@ -51,7 +47,7 @@ public class tokenizer
             }
             colNumber++;
         }
-        tokenList.add(new Token(EOF,-1,-1));
+        tl.add(new Token(EOF,-1,-1));
         //return tokenList;
     }
     private Token newToken(String s, int lineNumber, int colNumber) throws aWildKeystrokeAppeared
@@ -131,9 +127,9 @@ public class tokenizer
         }
         return t;
     }
-    public Queue<Token> getQueue()
+    public TokenList getTokenList()
     {
-        return tokenList;
+        return tl;
     }
     private boolean isInteger(String s)
     {

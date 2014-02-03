@@ -11,7 +11,7 @@ public class expression extends code_block
     
     expression() throws ExpressionExpectedException
     {
-        t = tokenList.poll();
+        t = super.tokenList.poll();
         if(t.a!=null)
         {
             e = new expression();
