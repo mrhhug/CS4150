@@ -1,3 +1,10 @@
+/*
+ *Author : Michael Hug
+ *Author email : hmichae4@students.kennesaw.edu
+ *Student of Prof Gayler cs4150 Spr014
+ *Project - Java
+ */
+
 package static_classes;
 
 import exceptions.RuntimeError;
@@ -7,12 +14,20 @@ public class memory
 {
     static Integer mem[] = new Integer[52];
     
+    /**
+     * postcondition: value has been stored as the value of the specified variable
+     * @param t
+     * @param i
+     */
     public static void set(Token t, Integer i) throws RuntimeError
     {
-        if(i==null)
-            throw new RuntimeError("no idea how you got here",t);
         mem[getArrayIndex(t)]=i;
     }
+    /**
+     * @param t must be integer token
+     * @return value stored for specified variable
+     * @throws RuntimeError if variable has not been initialized
+     */
     public static Integer get(Token t) throws RuntimeError
     {
         if(t.getCharacter()==null)

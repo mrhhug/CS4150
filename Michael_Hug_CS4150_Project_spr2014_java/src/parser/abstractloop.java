@@ -1,3 +1,10 @@
+/*
+ *Author : Michael Hug
+ *Author email : hmichae4@students.kennesaw.edu
+ *Student of Prof Gayler cs4150 Spr014
+ *Project - Java
+ */
+
 package parser;
 
 import enumerated_lists.Keyword;
@@ -9,12 +16,12 @@ import static enumerated_lists.Keyword.UNTIL;
 import static enumerated_lists.Keyword.WHILE;
 import exceptions.RuntimeError;
 
-public abstract class loop implements statement
+public abstract class abstractloop implements statemeniInterface
 {
     boolean_expression be;
     code_block cb;
     
-    loop() throws RuntimeError
+    abstractloop() throws RuntimeError
     {
         Token t = tl.pop();
         Keyword k = t.getKeyword();
@@ -31,28 +38,4 @@ public abstract class loop implements statement
         if(t.getKeyword()!=END)
             new RuntimeError("end keyword expected",t);
     }
-}
-class until_statement extends loop
-{
-    until_statement() throws RuntimeError 
-    {   }
-    
-    @Override
-    public void evaluate() throws RuntimeError
-    {
-        while(!be.evaluate())
-            cb.evaluate();
-    }
-}
-class while_statement extends loop
-{
-    while_statement() throws RuntimeError
-    {    }
-    
-    @Override
-    public void evaluate() throws RuntimeError
-    {
-        while(be.evaluate())
-            cb.evaluate();
-    } 
 }

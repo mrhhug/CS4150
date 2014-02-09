@@ -1,16 +1,19 @@
+/*
+ *Author : Michael Hug
+ *Author email : hmichae4@students.kennesaw.edu
+ *Student of Prof Gayler cs4150 Spr014
+ *Project - Java
+ */
+
 package parser;
 
-import lexicalanalyzer.Token;
 import exceptions.RuntimeError;
+import lexicalanalyzer.Token;
 import static_classes.memory;
 import static_classes.tl;
 
-interface statement
-{
-    void evaluate() throws RuntimeError;
-}
 
-class if_statement implements statement
+class if_statement implements statemeniInterface
 {
     boolean_expression be;
     code_block cb0;
@@ -46,7 +49,7 @@ class if_statement implements statement
     }
 }
 
-class print_statement implements statement
+class print_statement implements statemeniInterface
 {
     expresion e;
     
@@ -66,7 +69,7 @@ class print_statement implements statement
     }  
 }
 
-class assignment_statement implements statement
+class assignment_statement implements statemeniInterface
 {
     Token t;
     expresion e;
