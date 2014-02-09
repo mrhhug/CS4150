@@ -12,12 +12,13 @@ import lexicalanalyzer.Token;
 
 public class memory
 {
-    static Integer mem[] = new Integer[52];
+    private static final Integer mem[] = new Integer[52];
     
     /**
      * postcondition: value has been stored as the value of the specified variable
      * @param t
      * @param i
+     * @throws RuntimeError
      */
     public static void set(Token t, Integer i) throws RuntimeError
     {

@@ -53,6 +53,14 @@ public class Tokenizer
         tl.add(new Token(EOF,-1,-1));
     }
     
+    /**
+     * creates a new token from string line number and column number
+     * @param s
+     * @param lineNumber
+     * @param colNumber
+     * @returns Token
+     * @throws aWildKeystrokeAppeared 
+     */
     private Token newToken(String s, int lineNumber, int colNumber) throws aWildKeystrokeAppeared
     {
         Token t;
