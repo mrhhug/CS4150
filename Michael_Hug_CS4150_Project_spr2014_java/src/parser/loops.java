@@ -24,7 +24,7 @@ class until_statement extends abstractloop
 class while_statement extends abstractloop
 {
     while_statement() throws RuntimeError
-    {    }
+    {   }
     
     @Override
     public void evaluate() throws RuntimeError
