@@ -18,7 +18,8 @@ public class code_block
     code_block() throws RuntimeError
     {
         statementList = new java.util.LinkedList();
-        while(nexttokenBeginsStatement(tl.peek()));
+        while(nexttokenBeginsStatement(tl.peek()))
+            ;
     }
     private boolean nexttokenBeginsStatement(Token t) throws RuntimeError
     {
