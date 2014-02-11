@@ -52,11 +52,11 @@ public class Tokenizer
             }
             colNumber++;
         }
-        tl.add(new Token(EOF,-1,-1));
+        tl.add(new Token(EOF,lineNumber,colNumber));
     }
     
     /**
-     * creates a new token from string line number and column number
+     * creates a new token from string, line number, and column number
      * @param s
      * @param lineNumber
      * @param colNumber
@@ -140,6 +140,11 @@ public class Tokenizer
         }
         return t;
     }
+    /**
+     * trys to get java to parse string as integer
+     * @param s
+     * @returns true if java can parse string as integer
+     */
     private boolean isInteger(String s)
     {
         boolean returnme = false;

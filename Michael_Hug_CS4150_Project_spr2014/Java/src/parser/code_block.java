@@ -13,7 +13,7 @@ import exceptions.RuntimeError;
 
 public class code_block
 {
-    java.util.List<statemeniInterface> statementList;
+    private final java.util.List<statemeniInterface> statementList;
     
     code_block() throws RuntimeError
     {
