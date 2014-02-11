@@ -8,7 +8,7 @@
 package parser;
 
 import lexicalanalyzer.Token;
-import static_classes.tl;
+import globals.tl;
 import exceptions.RuntimeError;
 
 public class code_block

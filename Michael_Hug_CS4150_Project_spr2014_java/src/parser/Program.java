@@ -8,12 +8,11 @@
 package parser;
 
 import lexicalanalyzer.Token;
-import static_classes.tl;
+import globals.tl;
 import exceptions.RuntimeError;
 
 class Program
 {
-   
     Program() throws RuntimeError
     {
         Token t = tl.pop();

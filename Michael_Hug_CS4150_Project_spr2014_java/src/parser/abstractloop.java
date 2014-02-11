@@ -9,7 +9,7 @@ package parser;
 
 import enumerated_lists.Keyword;
 import lexicalanalyzer.Token;
-import static_classes.tl;
+import globals.tl;
 import static enumerated_lists.Keyword.DO;
 import static enumerated_lists.Keyword.END;
 import static enumerated_lists.Keyword.UNTIL;

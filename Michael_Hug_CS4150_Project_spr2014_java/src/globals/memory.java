@@ -5,7 +5,7 @@
  *Project - Java
  */
 
-package static_classes;
+package globals;
 
 import exceptions.RuntimeError;
 import lexicalanalyzer.Token;

@@ -7,7 +7,7 @@
 
 package parser;
 
-import static_classes.tl;
+import globals.tl;
 import exceptions.RuntimeError;
 
 public class Parser

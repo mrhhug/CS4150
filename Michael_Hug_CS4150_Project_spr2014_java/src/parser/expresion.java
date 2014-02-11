@@ -8,9 +8,9 @@
 package parser;
 
 import lexicalanalyzer.Token;
-import static_classes.tl;
+import globals.tl;
 import static enumerated_lists.Arithmetic_Operator.*;
-import static_classes.memory;
+import globals.memory;
 import exceptions.RuntimeError;
 
 class expresion
@@ -43,6 +43,6 @@ class expresion
         else if (t.getArithmetic_Operator()==DIV)
             return e0.evaluate() / e1.evaluate();
         else
-            throw new RuntimeError("arithmatic operato, id, or literal integer expected",t);
+            throw new RuntimeError("arithmatic operator, id, or literal integer expected",t);
     }
 }

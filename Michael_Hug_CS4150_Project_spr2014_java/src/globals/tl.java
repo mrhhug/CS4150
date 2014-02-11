@@ -5,13 +5,13 @@
  *Project - Java
  */
 
-package static_classes;
+package globals;
 
 import lexicalanalyzer.Token;
 
 public class tl
 {
-    public static java.util.List<Token> TokenList = new java.util.LinkedList<>();
+    private static final java.util.List<Token> TokenList = new java.util.LinkedList<>();
     
     /**
      * adds token to tokenlist

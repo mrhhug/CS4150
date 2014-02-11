@@ -9,8 +9,8 @@ package parser;
 
 import exceptions.RuntimeError;
 import lexicalanalyzer.Token;
-import static_classes.memory;
-import static_classes.tl;
+import globals.memory;
+import globals.tl;
 
 
 class if_statement implements statemeniInterface

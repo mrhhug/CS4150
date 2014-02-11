@@ -7,7 +7,7 @@
 
 package lexicalanalyzer;
 
-import static_classes.tl;
+import globals.tl;
 import static enumerated_lists.Arithmetic_Operator.*;
 import static enumerated_lists.Keyword.*;
 import static enumerated_lists.Relation_Operator.*;
