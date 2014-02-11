@@ -17,7 +17,11 @@ public class main
 {
     public static void main(String[] args) throws aWildKeystrokeAppeared, IOException, RuntimeError
     {
-        String fileName = "ruby.rb";
+        String fileName;
+        if (args.length == 0)
+			fileName = "./../ruby.rb";
+        else
+            fileName = args[0];
         new Tokenizer(fileName);
         new Parser();
     }

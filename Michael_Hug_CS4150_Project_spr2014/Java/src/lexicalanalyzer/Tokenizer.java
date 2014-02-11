@@ -25,6 +25,8 @@ public class Tokenizer
    
     public Tokenizer(String fileName) throws FileNotFoundException, aWildKeystrokeAppeared, IOException
     {
+        if (fileName == null)
+			throw new IllegalArgumentException ("null string argument");
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName),Charset.forName("UTF-8")));
         String buffer = "";
         int c;
