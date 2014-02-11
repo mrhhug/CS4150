@@ -15,7 +15,7 @@ import exceptions.aWildKeystrokeAppeared;
 
 public class main 
 {
-    public static void main(String[] args) throws aWildKeystrokeAppeared, IOException, RuntimeError
+    public static void main(String[] args) throws RuntimeError, aWildKeystrokeAppeared, IOException
     {
         String fileName;
         if (args.length == 0)
