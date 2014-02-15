@@ -7,77 +7,55 @@
 
 package lexicalanalyzer;
 
-import enumerated_lists.Arithmetic_Operator;
-import enumerated_lists.Keyword;
-import enumerated_lists.Relation_Operator;
+import globals.Lexeme;
 
 public class Token
 {
-    private Arithmetic_Operator a;
-    private Character c;
-    private Integer i;
-    private Keyword k;
-    private Relation_Operator r;
-    private final int lineNumber;
-    private final int colNumber;
+    private char Char;
+    private int litInt;
+    private final Lexeme lexeme;
+    private final int lineNum;
+    private final int columnNum;
     
-    Token(Arithmetic_Operator a, int lineNumber, int colNumber)
+    Token(Lexeme lx, int lineNum, int columnNum)
     {
-        this.a = a;
-        this.lineNumber = lineNumber;
-        this.colNumber = colNumber;
+        this.lexeme = lx;
+        this.lineNum = lineNum;
+        this.columnNum = columnNum;
     }
-    Token(Character c, int lineNumber, int colNumber)
+    Token(char Char, int lineNum, int columnNum)
     {
-        this.c = c;
-        this.k = enumerated_lists.Keyword.ID;
-        this.lineNumber = lineNumber;
-        this.colNumber = colNumber;
+        this.Char=Char;
+        this.lexeme=globals.KeywordLexeme.ID;
+        this.lineNum = lineNum;
+        this.columnNum = columnNum;
     }
-    Token(Integer i, int lineNumber, int colNumber)
+    Token(int litInt, int lineNum, int columnNum)
     {
-        this.i = i;
-        this.lineNumber = lineNumber;
-        this.colNumber = colNumber;
-    }
-    Token(Keyword k, int lineNumber, int colNumber)
-    {
-        this.k = k;
-        this.lineNumber = lineNumber;
-        this.colNumber = colNumber;
-    }
-    Token(Relation_Operator r, int lineNumber, int colNumber)
-    {
-        this.r = r;
-        this.lineNumber = lineNumber;
-        this.colNumber = colNumber;
-    }
-    public int getlineNumber()
-    {
-        return lineNumber;
-    }
-    public int getcolNumber()
-    {
-        return colNumber;
-    }
-    public Arithmetic_Operator getArithmetic_Operator()
-    {
-        return a;
+        this.litInt=litInt;
+        this.lexeme=globals.KeywordLexeme.LI;
+        this.lineNum = lineNum;
+        this.columnNum = columnNum;
     }
     public Character getCharacter()
     {
-        return c;
+        return Char;
     }
-    public Integer getInteger()
+    public int getLiteralInteger()
     {
-        return i;
+        return litInt;
     }
-    public Keyword getKeyword()
+    public Lexeme getLexeme()
     {
-        return k;
+        return lexeme;
     }
-    public Relation_Operator getRelation_Operator()
+    public int getLineNumber()
     {
-        return r;
+        return lineNum;
+    }
+    public int getColumnNumber()
+    {
+        return columnNum;
     }
 }
+

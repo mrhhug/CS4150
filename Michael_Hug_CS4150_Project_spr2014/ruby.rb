@@ -1,6 +1,5 @@
 def
- 	puts -1
- 	b = 2
+ 	b = -22
  	puts b
  	b = 3
  	puts b
@@ -10,7 +9,7 @@ end
 def
 	puts 5
 end
-def
+ def
 	c = 6
 	while < c 10 do
 		c = + c 1
@@ -27,7 +26,7 @@ def
 	puts 222
 end
 def
-	if > c 1 then puts 1 else puts 0 end
+	if > c 1 then puts 456 puts 456 puts 456 puts 456 else puts 654 puts 654 puts 654 puts 654 end
 	if < c 1 then puts 1 else puts 0 end
 	if >= c 1 then puts 1 else puts 0 end
 	if <= c 1 then puts 1 else puts 0 end

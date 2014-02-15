@@ -7,23 +7,16 @@
 
 package parser;
 
-import lexicalanalyzer.Token;
-import globals.tl;
-import exceptions.RuntimeError;
-
 class Program
 {
-    Program() throws RuntimeError
+    Code_block cB;
+    
+    Program(Code_block cB)
     {
-        Token t = tl.pop();
-        if(t.getKeyword()!=enumerated_lists.Keyword.DEF)
-            new RuntimeError("def keyword expected",t);
-        
-        code_block cb= new code_block();
-        
-        t = tl.pop();
-        if(t.getKeyword()!=enumerated_lists.Keyword.END)
-            new RuntimeError("end keyword expected",t);
-        cb.evaluate();
+        this.cB = cB;
+    }
+    void evaluate() throws exceptions.UndefinedVariable
+    {
+        cB.evaluate();
     }
 }

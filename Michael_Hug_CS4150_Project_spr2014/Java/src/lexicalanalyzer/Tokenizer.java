@@ -7,10 +7,9 @@
 
 package lexicalanalyzer;
 
-import globals.tl;
-import static enumerated_lists.Arithmetic_Operator.*;
-import static enumerated_lists.Keyword.*;
-import static enumerated_lists.Relation_Operator.*;
+import static globals.ArithmeticOperatorLexeme.*;
+import static globals.KeywordLexeme.*;
+import static globals.RelationalOperatorLexeme.*;
 import exceptions.aWildKeystrokeAppeared;
 
 import java.io.BufferedReader;
@@ -22,11 +21,13 @@ import java.nio.charset.Charset;
 
 public class Tokenizer
 {
-   
-    public Tokenizer(String fileName) throws FileNotFoundException, aWildKeystrokeAppeared, IOException
+   private final java.util.List<Token> TokenList;
+           
+    public Tokenizer(String fileName) throws aWildKeystrokeAppeared, FileNotFoundException, IOException
     {
+        TokenList = new java.util.LinkedList<>();
         if (fileName == null)
-			throw new IllegalArgumentException ("null string argument");
+            throw new IllegalArgumentException ("null string argument");
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName),Charset.forName("UTF-8")));
         String buffer = "";
         int c;
@@ -38,7 +39,7 @@ public class Tokenizer
             if(Character.isWhitespace(c))
             {
                 if(!buffer.isEmpty())
-                    tl.add(newToken(buffer,lineNumber,colNumber));
+                    add(newToken(buffer,lineNumber,colNumber));
                 buffer = "";
             }
             else
@@ -52,7 +53,7 @@ public class Tokenizer
             }
             colNumber++;
         }
-        tl.add(new Token(EOF,lineNumber,colNumber));
+        add(new Token(EOF,lineNumber,colNumber));
     }
     
     /**
@@ -135,7 +136,7 @@ public class Tokenizer
                     t = new Token(DIV, lineNumber, colNumber);
                     break;
                 default: 
-                    throw new aWildKeystrokeAppeared(lineNumber, colNumber);
+                    throw new aWildKeystrokeAppeared(s,lineNumber, colNumber);
             }
         }
         return t;
@@ -156,5 +157,42 @@ public class Tokenizer
         catch( NumberFormatException e )
         { }
         return returnme;
+    }
+    /**
+     * adds token to tokenlist
+     * @param t 
+     */
+    private void add(Token t)
+    {
+        TokenList.add(t);
+    }
+    /**
+     * precondition: tokenlist is not empty
+     * @return token at front of list removing the token from the list
+     * @throws RuntimeException if tokens is empty
+     */
+    public Token pop()
+    {
+        if (!moreTokens())
+                throw new RuntimeException ("no more tokens");
+        return TokenList.remove(0);
+    }
+    /**
+     * precondition: tokenlist is not empty
+     * @return token at front of list leaving token on list
+     * @throws RuntimeException if tokens is empty
+     */
+    public Token peek()
+    {
+        if (!moreTokens())
+                throw new RuntimeException ("no more tokens");
+        return TokenList.get(0);
+    }
+    /**
+     * @return true if there are more tokens - false otherwise
+     */
+    public boolean moreTokens ()
+    {
+        return !TokenList.isEmpty();
     }
 }
