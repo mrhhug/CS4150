@@ -17,11 +17,11 @@ public class Memory
     /**
      * @param token
      * @return value stored for specified variable
-     * @throws exceptions.UndefinedVariable
+     * @throws exceptions.UndefinedVariable when variable is undefined
      */
     public static int fetch(Token token) throws UndefinedVariable
     {
-        Integer intgr = mem[getArrayIndex(token.getCharacter())];
+        Integer intgr = mem[getArrayIndex(token.getID())];
         if(intgr==null)
             throw new UndefinedVariable(token);
         return intgr;
@@ -34,7 +34,7 @@ public class Memory
      */
     public static void store(Token token, int value)
     {
-        mem[getArrayIndex(token.getCharacter())] = value;
+        mem[getArrayIndex(token.getID())] = value;
     }
     private static int getArrayIndex(char minuend)
     {

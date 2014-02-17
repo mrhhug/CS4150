@@ -12,9 +12,15 @@ import lexicalanalyzer.Token;
 public abstract class UnaryExpression implements Expression 
 {
     Token token;
-    
+    /**
+     * preconditions: token is not null
+     * postcondition: UnaryExpression is created
+     * @param token 
+     */
     UnaryExpression(Token token)
     {
+        if (token == null)
+            throw new IllegalArgumentException ("null Token");
         this.token=token;
     }
 }
@@ -25,6 +31,10 @@ class IdUnaryExpression extends UnaryExpression
     {
         super(token);
     }
+    /**
+     * @return value of IdUnaryExpression
+     * @throws exceptions.UndefinedVariable if an undefined variable is in IdUnaryExpression at evaluate time
+     */
     public int evaluate() throws exceptions.UndefinedVariable
     {
         return globals.Memory.fetch(token);
@@ -37,6 +47,9 @@ class LiteralIntegerUnaryExpression extends UnaryExpression
     {
         super(token);
     }
+    /**
+     * @return value of LiteralIntegerUnaryExpression
+     */
     public int evaluate()
     {
         return token.getLiteralInteger();

@@ -10,12 +10,17 @@ package parser;
 class Print_statement implements Statement
 {
     Expression expr;
-    
+    /**
+     * preconditions: expr is not null
+     * postcondition: Print_statement is created
+     * @param expr 
+     */
     public Print_statement(Expression expr)
     {
+        if (expr == null)
+            throw new IllegalArgumentException ("null Print_statement");
         this.expr = expr;
     }
-
     @Override
     public void evaluate() throws exceptions.UndefinedVariable
     {

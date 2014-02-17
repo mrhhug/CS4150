@@ -11,6 +11,7 @@ interface Statement
 {
     /**
      * evaluates statement
+     * @throws exceptions.UndefinedVariable if an undefined variable is in Statement at evaluate time
      */
     void evaluate() throws exceptions.UndefinedVariable;
 }

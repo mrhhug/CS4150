@@ -7,15 +7,7 @@
 
 package globals;
 
-public enum RelationalOperatorLexeme implements Lexeme
+public enum RelationalOperatorLexeme
 {
     LE, LT, GE, GT, EQ, NE;
-    
-    public static RelationalOperatorLexeme promoteLexeme(Lexeme lexeme)
-    {
-        for (RelationalOperatorLexeme rolexeme : RelationalOperatorLexeme.values())
-            if (rolexeme.toString().compareTo(lexeme.toString())==0)
-                return rolexeme;
-        return null;
-    }
 }

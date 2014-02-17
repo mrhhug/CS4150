@@ -16,22 +16,24 @@ public class BinaryExpression implements Expression
     private Expression expr2;
 
     /**
-     * precondition: e0 & e1 are not null
+     * precondition: arithmeticOperator is not null, expr1 is not null, expr2 is not null
+     * postcondition: BinaryExpression is created
      * @param arithmeticOperator
      * @param expr1
      * @param expr2
      */
     public BinaryExpression(ArithmeticOperatorLexeme arithmeticOperator, Expression expr1, Expression expr2)
     {
+        if (arithmeticOperator == null)
+            throw new IllegalArgumentException ("null ArithmeticOperatorLexeme");
         if (expr1 == null || expr2 == null)
             throw new IllegalArgumentException ("null expression argument");
         this.arithmeticOperator = arithmeticOperator;
         this.expr1 = expr1;
         this.expr2 = expr2;
     }
-
     /**
-     * @return value of the expression
+     * @return value of the BinaryExpression
      */
     public int evaluate() throws exceptions.UndefinedVariable
     {

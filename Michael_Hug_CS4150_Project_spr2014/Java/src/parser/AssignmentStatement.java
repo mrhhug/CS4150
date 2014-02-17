@@ -14,8 +14,18 @@ public class AssignmentStatement implements Statement
     Token token;
     Expression expr;
     
+    /**
+     * preconditions: token is not null, expr is not null
+     * postcondition: Assignment statement is created
+     * @param token
+     * @param expr
+     */
     public AssignmentStatement(Token token, Expression expr)
     {
+        if (token == null)
+            throw new IllegalArgumentException ("null Token");
+        if (expr == null)
+            throw new IllegalArgumentException ("null Expression");
         this.token=token;
         this.expr=expr;
     }

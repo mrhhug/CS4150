@@ -12,7 +12,13 @@ public class aWildKeystrokeAppeared extends Exception
     private String gibberish;
     private int rowNumber;
     private int columnNumber;
-    
+    /**
+     * preconditions: gibberish is not null, tokenrowNumber > 0, tokencolumnNumber > 0
+     * @param gibberish
+     * @param rowNumber
+     * @param columnNumber
+     * @throws IllegalArgumentException if message is null, rowNumber <= 0, or columnNumber <= 0
+    */
     public aWildKeystrokeAppeared(String gibberish, int rowNumber, int columnNumber) 
     {
         if(gibberish==null)
@@ -25,11 +31,14 @@ public class aWildKeystrokeAppeared extends Exception
         this.rowNumber = rowNumber;
 	this.columnNumber = columnNumber;
         
-        //You could have entered a value outside the spectrum of a signed int32 -2,147,483,647 to 2,147,483,647");
+        //You could have entered a value outside the spectrum of a signed int32: -2,147,483,647 to 2,147,483,647");
         // check tatoo
         // http://stackoverflow.com/a/94608
     }
-    public String getgibberish()
+    /**
+     * @return gibberish
+     */
+    public String getGibberish()
     {
         return gibberish;
     }

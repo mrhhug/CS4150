@@ -12,11 +12,21 @@ import java.util.List;
 public class Code_block
 {
     private final List<Statement> statementList;
-    
+    /**
+     * preconditions: statementList is not null
+     * postcondition: Code_block is created
+     * @param statementList
+     */
     Code_block(List<Statement> statementList)
     {
+        if (statementList == null)
+            throw new IllegalArgumentException ("null Statement List");
         this.statementList = statementList;
     }
+    /**
+     * evaluates Code_block
+     * @throws exceptions.UndefinedVariable if an undefined variable is in Code_block at evaluate time
+     */
     void evaluate() throws exceptions.UndefinedVariable
     {
         for(Statement s : statementList)

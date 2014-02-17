@@ -7,15 +7,7 @@
 
 package globals;
 
-public enum KeywordLexeme implements Lexeme
+public enum KeywordLexeme
 {
-    ASSIGN, EOF, DEF, END, IF, THEN, ELSE, WHILE, DO, PUTS, UNTIL, ID, LI;
-
-    public static KeywordLexeme promoteLexeme(Lexeme lexeme)
-    {
-        for (KeywordLexeme klexeme : KeywordLexeme.values())
-            if (klexeme.toString().compareTo(lexeme.toString())==0)
-                return klexeme;
-        return null;
-    }
+    ASSIGN, EOF, DEF, END, IF, THEN, ELSE, WHILE, DO, PUTS, UNTIL, ID;
 }

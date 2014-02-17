@@ -7,10 +7,10 @@
 
 package lexicalanalyzer;
 
-import static globals.ArithmeticOperatorLexeme.*;
-import static globals.KeywordLexeme.*;
-import static globals.RelationalOperatorLexeme.*;
 import exceptions.aWildKeystrokeAppeared;
+import static globals.ArithmeticOperatorLexeme.*;
+import globals.KeywordLexeme;
+import static globals.RelationalOperatorLexeme.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -22,7 +22,14 @@ import java.nio.charset.Charset;
 public class Tokenizer
 {
    private final java.util.List<Token> TokenList;
-           
+    /**
+     * precondition: fileName is not null
+     * postcondition: file is translated to TokenList
+     * @param fileName
+     * @throws aWildKeystrokeAppeared if characters surrounded by whitespace can not be parsed as lexeme
+     * @throws FileNotFoundException if file can not be found
+     * @throws IOException  if an error occurs while reading file
+     */       
     public Tokenizer(String fileName) throws aWildKeystrokeAppeared, FileNotFoundException, IOException
     {
         TokenList = new java.util.LinkedList<>();
@@ -31,15 +38,15 @@ public class Tokenizer
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName),Charset.forName("UTF-8")));
         String buffer = "";
         int c;
-        int lineNumber = 1;
-        int colNumber = 1;
+        int rowNumber = 1;
+        int columnNumber = 1;
         while((c = reader.read()) != -1)
         {
             //System.out.println(c);
             if(Character.isWhitespace(c))
             {
                 if(!buffer.isEmpty())
-                    add(newToken(buffer,lineNumber,colNumber));
+                    add(newToken(buffer,rowNumber,columnNumber));
                 buffer = "";
             }
             else
@@ -48,101 +55,100 @@ public class Tokenizer
             }
             if(c == '\n' || c == '\r')
             {
-                lineNumber++;
-                colNumber=0;
+                rowNumber++;
+                columnNumber=0;
             }
-            colNumber++;
+            columnNumber++;
         }
-        add(new Token(EOF,lineNumber,colNumber));
+        add(new Token(globals.KeywordLexeme.EOF,rowNumber,columnNumber));
     }
-    
     /**
-     * creates a new token from string, line number, and column number
      * @param s
-     * @param lineNumber
-     * @param colNumber
+     * @param rowNumber
+     * @param columnNumber
      * @returns Token
-     * @throws aWildKeystrokeAppeared 
+     * @throws aWildKeystrokeAppeared if string cannot be parsed as lexeme
      */
-    private Token newToken(String s, int lineNumber, int colNumber) throws aWildKeystrokeAppeared
+    private Token newToken(String s, int rowNumber, int columnNumber) throws aWildKeystrokeAppeared
     {
         Token t;
         if(s.matches("[a-zA-Z]"))
-            t = new Token(s.charAt(0), lineNumber, colNumber);
+            t = new Token(s.charAt(0), rowNumber, columnNumber);
         else if(isInteger(s))
-            t = new Token(Integer.parseInt(s), lineNumber, colNumber);
-        else
+            t = new Token(Integer.parseInt(s), rowNumber, columnNumber);
+        else if(isKeyword(s))
+            t = new Token(KeywordLexeme.valueOf(s.toUpperCase()), rowNumber, columnNumber);
+        else if(otherLexeme(s))
         {
             switch (s)
             {
-                case "def":
-                    t = new Token(DEF, lineNumber, colNumber);
-                    break;
-                case "end":
-                    t = new Token(END, lineNumber, colNumber);
-                    break;
-                case "if":
-                    t = new Token(IF, lineNumber, colNumber);
-                    break;
-                case "then":
-                    t = new Token(THEN, lineNumber, colNumber);
-                    break;
-                case "else":
-                    t = new Token(ELSE, lineNumber, colNumber);
-                    break;
-                case "while":
-                    t = new Token(WHILE, lineNumber, colNumber);
-                    break;
-                case "do":
-                    t = new Token(DO, lineNumber, colNumber);
-                    break;
-                case "puts":
-                    t = new Token(PUTS, lineNumber, colNumber);
-                    break;
-                case "until":
-                    t = new Token(UNTIL, lineNumber, colNumber);
-                    break;
                 case "=":
-                    t = new Token(ASSIGN, lineNumber, colNumber);
+                    t = new Token(globals.KeywordLexeme.ASSIGN, rowNumber, columnNumber);
                     break;
                 case "<=":
-                    t = new Token(LE, lineNumber, colNumber);
+                    t = new Token(LE, rowNumber, columnNumber);
                     break;
                 case "<":
-                    t = new Token(LT, lineNumber, colNumber);
+                    t = new Token(LT, rowNumber, columnNumber);
                     break;
                 case ">=":
-                    t = new Token(GE, lineNumber, colNumber);
+                    t = new Token(GE, rowNumber, columnNumber);
                     break;
                 case ">":
-                    t = new Token(GT, lineNumber, colNumber);
+                    t = new Token(GT, rowNumber, columnNumber);
                     break;
                 case "==":
-                    t = new Token(EQ, lineNumber, colNumber);
+                    t = new Token(EQ, rowNumber, columnNumber);
                     break;
                 case "/=":
-                    t = new Token(NE, lineNumber, colNumber);
+                    t = new Token(NE, rowNumber, columnNumber);
                     break;
                 case "+":
-                    t = new Token(ADD, lineNumber, colNumber);
+                    t = new Token(ADD, rowNumber, columnNumber);
                     break;
                 case "-":
-                    t = new Token(SUB, lineNumber, colNumber);
+                    t = new Token(SUB, rowNumber, columnNumber);
                     break;
                 case "*":
-                    t = new Token(MUL, lineNumber, colNumber);
+                    t = new Token(MUL, rowNumber, columnNumber);
                     break;
-                case "/":
-                    t = new Token(DIV, lineNumber, colNumber);
+                //case "/":
+                default:
+                    t = new Token(DIV, rowNumber, columnNumber);
                     break;
-                default: 
-                    throw new aWildKeystrokeAppeared(s,lineNumber, colNumber);
             }
         }
+        else
+            throw new aWildKeystrokeAppeared(s, rowNumber, columnNumber);
         return t;
     }
     /**
-     * trys to get java to parse string as integer
+     * @param s
+     * @returns true if s is one of my other lememe
+     */
+    //////////////do something else here
+    private boolean otherLexeme(String s)
+    {
+        return s.equals("=")||s.equals("<=")||s.equals("<")||s.equals(">=")||s.equals(">")||
+                s.equals("==")||s.equals("/=")||s.equals("+")||s.equals("-")||s.equals("*")||s.equals("/");
+    }
+    /**
+     * @param s
+     * @returns true if java can parse string as KeywordLexeme
+     */
+    private boolean isKeyword(String s)
+    {
+        boolean returnme = false;
+        try
+        {
+            KeywordLexeme.valueOf(s.toUpperCase());
+            returnme = true;
+        }
+        catch( IllegalArgumentException e )
+        { }
+        return returnme;
+    }
+    /**
      * @param s
      * @returns true if java can parse string as integer
      */
@@ -159,15 +165,19 @@ public class Tokenizer
         return returnme;
     }
     /**
-     * adds token to tokenlist
+     * precondition: TokenList is not null
+     * postcondition: Token is added to TokenList
+     * @throws RuntimeException if tokens is null
      * @param t 
      */
     private void add(Token t)
     {
+        if(TokenList==null)
+            throw new RuntimeException ("null TokenList");
         TokenList.add(t);
     }
     /**
-     * precondition: tokenlist is not empty
+     * precondition: TokenList is not empty
      * @return token at front of list removing the token from the list
      * @throws RuntimeException if tokens is empty
      */
@@ -178,7 +188,7 @@ public class Tokenizer
         return TokenList.remove(0);
     }
     /**
-     * precondition: tokenlist is not empty
+     * precondition: TokenList is not empty
      * @return token at front of list leaving token on list
      * @throws RuntimeException if tokens is empty
      */
