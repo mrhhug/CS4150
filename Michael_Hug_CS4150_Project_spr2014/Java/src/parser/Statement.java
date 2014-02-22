@@ -17,5 +17,5 @@ interface Statement
      * @throws UndefinedVariable if an undefined variable is in Statement at evaluate time
      * @throws LexException if a lexeme is unknown
      */
-    void evaluate() throws UndefinedVariable, LexException;
+    abstract void evaluate() throws UndefinedVariable, LexException;
 }
