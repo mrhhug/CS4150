@@ -1,7 +1,13 @@
 #!/usr/bin/python3
+'''
+Author : Michael Hug
+Author email : hmichae4@students.kennesaw.edu
+Student of Prof Gayler cs4150 Spr014
+Assignment 2
+'''
 
 mem = ["undefined variable"] * 52
-lexAnal = ["def","end","if","then","else","while","do","puts","until","=","<=","<",">=",">","==","/=","+","-","*","/"]
+lexeme = ["def","end","if","then","else","while","do","puts","until","=","<=","<",">=",">","==","/=","+","-","*","/"]
 tl = []
 
 
@@ -27,14 +33,15 @@ def exceptshion(err):
 
 class Program(object):
 	def __init__(self):
-		tl.pop(0)[0] if tl[0][0]=='ddef' else TestFailed("Program's 'def' keyword")
+		tl.pop(0)[0] if tl[0][0]=='def' else TestFailed("Program's 'def' keyword")
 		b = Code_Block()
 		tl.pop(0)[0] if tl[0][0]=='end' else exceptshion("Program's 'end' keyword")
 		b.evalu()
 
 class If():
-	def __init__(self,*arg):
-		self.b=Bool(tl.pop(0))
+	def __init__(self):
+		tl.pop(0) # assert this
+		self.b=Bool()
 		tl.pop(0)[0] if tl[0][0]=='then' else exceptshion("If's 'then' keyword")
 		self.cb=Code_Block()
 		tl.pop(0)[0] if tl[0][0]=='else' else exceptshion("If's 'else' keyword")
@@ -53,7 +60,7 @@ class Code_Block():
 			pass
 	def nexttokenBeginsStatement(self):
 		if(tl[0][0]=='if'):
-			self.statementList.append(If(tl.pop(0)))
+			self.statementList.append(If())
 		elif(tl[0][0]=='while' or tl[0][0]=='until'):
 			self.statementList.append(Loop())
 		elif(len(tl[0][0])==1 and tl[0][0].isalpha()):
@@ -77,16 +84,15 @@ class Assi():
 
 class Loop():
 	def __init__(self):
-	###### wtf continues even after assertation error
-		keyword = tl.pop(0) if (tl[0][0]=='wwhile' or tl[0][0]=='until') else exceptshion("Loop's 'while' or 'until' keyword")
-		#assert (a[0]=='wshile' or a[0]=='until'),"while or until keyword "#+exceptshion("d")
-		#self.keyword=keyword
+		a = tl.pop(0) if (tl[0][0]=='while' or tl[0][0]=='until') else exceptshion("Loop's 'while' or 'until' keyword")
+		assert (a[0]=='while' or a[0]=='until'),"while or until keyword "+exceptshion("d")
+		self.keyword=a
 		self.b=Bool()
 		assert (tl.pop(0)[0]=='do'),"do keyword "+exceptshion()
 		self.cb=Code_Block()
 		assert (tl.pop(0)[0]=='end'),"end keyword "+exceptshion()
 	def evalu(self):
-		if(keyword=="while"):
+		if(self.keyword=="while"):
 			while(self.b.evalu()):
 				self.cb.evalu()
 		else:
@@ -96,8 +102,8 @@ class Loop():
 class Bool():
 	def __init__(self):
 		ro = tl.pop(0)
-		print (ro)
-		assert(10<=lexAnal.index(ro[0])<=15 ),exceptshion("Boolean's relational operator")
+		#print (ro)
+		assert(10<=lexeme.index(ro[0])<=15 ),exceptshion("Boolean's relational operator")
 		self.ro=ro
 		self.e1=Expresion()
 		self.e2=Expresion()
@@ -149,7 +155,7 @@ def gettype(buffer,line,column):
 			pass
 		if(len(buffer)==1 and buffer.isalpha()):
 			return (buffer[0],line,column)
-		assert (any(buffer in _ for _ in lexAnal)),"Lexical Analyzer fail. Unidentified token:'%s' found on line:%d,column:%d" % (buffer,line,column)
+		assert (any(buffer in _ for _ in lexeme)),"Lexical Analyzer fail. Unidentified token:'%s' found on line:%d,column:%d" % (buffer,line,column)
 		return (buffer,line,column)
 			   
 def Tokenize(fileName):
@@ -171,7 +177,7 @@ def Tokenize(fileName):
 			column+=1
 		f.close()
 		
-Tokenize("/home/michael/School/CSCI/CS4150/Michael_Hug_CS4150_Project_spr2014/ruby.rb")
+Tokenize("./../ruby.rb")
 while tl:
 	Program()
 	
