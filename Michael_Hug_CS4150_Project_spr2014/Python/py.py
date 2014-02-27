@@ -15,14 +15,19 @@ def getmem(a):
 	assert(b!='undefined variable'), "undefined variable "+exceptshion()
 	return b
 
+class TestFailed(Exception):
+    def __init__(self, m):
+        self.message = m
+    def __str__(self):
+        return self.message
+        
 def exceptshion(err):
 	print (err+" expected, found:'%s'. line:%d,column:%d" % (tl[0][0],tl[0][1],tl[0][2]))
-	assert ('have a traceback')
-	#sys.exit(0)
+	assert (False)
 
-class Program():
+class Program(object):
 	def __init__(self):
-		tl.pop(0)[0] if tl[0][0]=='def' else exceptshion("Program's 'def' keyword")
+		tl.pop(0)[0] if tl[0][0]=='ddef' else TestFailed("Program's 'def' keyword")
 		b = Code_Block()
 		tl.pop(0)[0] if tl[0][0]=='end' else exceptshion("Program's 'end' keyword")
 		b.evalu()
