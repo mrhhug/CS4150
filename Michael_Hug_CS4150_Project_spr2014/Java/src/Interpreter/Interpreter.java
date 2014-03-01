@@ -18,7 +18,7 @@ public class Interpreter
 {
     public static void main(String[] args)
     {
-        //args = new String [] {"./ruby.rb"};
+        args = new String [] {"./ruby.rb"};
         if (args.length == 0)
 			System.out.println("java Interpreter file_name expected");
         else
