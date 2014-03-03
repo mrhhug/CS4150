@@ -1,0 +1,3 @@
+javac -d ./compiled/ ./lexicalanalyzer/Token.java ./globals/ArithmeticOperatorLexeme.java ./globals/KeywordLexeme.java ./globals/Memory.java ./globals/RelationalOperatorLexeme.java ./exceptions/aWildKeystrokeAppeared.java ./exceptions/LexException.java ./exceptions/UndefinedVariable.java ./lexicalanalyzer/Tokenizer.java ./parser/AbstractLoop.java ./parser/AssignmentStatement.java ./parser/BinaryExpression.java ./parser/BooleanExpression.java ./parser/Code_block.java ./parser/Expression.java ./parser/If_statement.java ./parser/Program.java ./parser/Print_statement.java ./parser/Statement.java ./parser/UnaryExpression.java ./parser/Parser.java ./Interpreter/Interpreter.java
+
+java Interpreter/Interpreter ./ruby.rb
