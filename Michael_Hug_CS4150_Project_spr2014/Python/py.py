@@ -7,7 +7,7 @@ Assignment 2
 '''
 
 mem = ["undefined variable"] * 52
-lexeme = ["def","end","if","then","else","while","do","puts","until","=","<=","<",">=",">","==","/=","+","-","*","/"]
+lexeme = [("def","end","if","then","else","while","do","puts","until"),("=","<=","<",">=",">","==","/="),("+","-","*","/")]
 tl = []
 
 
