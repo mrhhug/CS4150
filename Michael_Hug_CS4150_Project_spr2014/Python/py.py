@@ -3,11 +3,11 @@
 Author : Michael Hug
 Author email : hmichae4@students.kennesaw.edu
 Student of Prof Gayler cs4150 Spr014
-Assignment 2
+project - Python
 '''
 
 mem = ["undefined variable"] * 52
-lexeme = [("def","end","if","then","else","while","do","puts","until"),("=","<=","<",">=",">","==","/="),("+","-","*","/")]
+lexeme = ("def","end","if","then","else","while","do","puts","until","=","<=","<",">=",">","==","/=","+","-","*","/")
 tl = []
 
 
