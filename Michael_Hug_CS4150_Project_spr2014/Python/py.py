@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+
+from Exceptions import *
+
 '''
 Author : Michael Hug
 Author email : hmichae4@students.kennesaw.edu
@@ -7,46 +10,38 @@ project - Python
 '''
 
 mem = ["undefined variable"] * 52
-lexeme = ("def","end","if","then","else","while","do","puts","until","=","<=","<",">=",">","==","/=","+","-","*","/")
+lexeme = (("def","end","if","then","else","while","do","puts","until"),("=","<=","<",">=",">","==","/="),("+","-","*","/"))
 tl = []
-
-
-#
-# reverse list and omit the number on the pop
-#
 
 def getmem(a):
 	b = mem[ord(a[0])-65 if ord(a[0])<91 else ord(a[0])-71]
 	# this peeks wring token all over and gives wrong error
-	assert(b!='undefined variable'), "undefined variable "+exceptshion()
+	if (b=='undefined variable'):
+		raise MemoryException
 	return b
+		
+def LexicalLexicalAnalyzerCheck(c,n):
+	if tl[0][0]==n:
+		return tl.pop(0)
+	else:
+		raise LexicalException(c.__class__.__name__+"'s '"+n+"' lexeme expected, found:'%s'. line:%d,column:%d" % (tl[0][0],tl[0][1],tl[0][2]))
 
-class TestFailed(Exception):
-    def __init__(self, m):
-        self.message = m
-    def __str__(self):
-        return self.message
-        
-def exceptshion(err):
-	print (err+" expected, found:'%s'. line:%d,column:%d" % (tl[0][0],tl[0][1],tl[0][2]))
-	assert (False)
-
-class Program(object):
+class Program():
 	def __init__(self):
-		tl.pop(0)[0] if tl[0][0]=='def' else TestFailed("Program's 'def' keyword")
+		LexicalLexicalAnalyzerCheck(self,'def')
 		b = Code_Block()
-		tl.pop(0)[0] if tl[0][0]=='end' else exceptshion("Program's 'end' keyword")
+		LexicalLexicalAnalyzerCheck(self,'end')
 		b.evalu()
 
 class If():
 	def __init__(self):
-		tl.pop(0) # assert this
+		LexicalLexicalAnalyzerCheck(self,'if')
 		self.b=Bool()
-		tl.pop(0)[0] if tl[0][0]=='then' else exceptshion("If's 'then' keyword")
+		LexicalLexicalAnalyzerCheck(self,'then')
 		self.cb=Code_Block()
-		tl.pop(0)[0] if tl[0][0]=='else' else exceptshion("If's 'else' keyword")
+		LexicalLexicalAnalyzerCheck(self,'else')
 		self.cb2=Code_Block()
-		tl.pop(0)[0] if tl[0][0]=='end' else exceptshion("If's 'end' keyword")
+		LexicalLexicalAnalyzerCheck(self,'end')		
 	def evalu(self):
 		if(self.b.evalu()):
 			self.cb.evalu()
@@ -77,20 +72,22 @@ class Code_Block():
 class Assi():
 	def __init__(self,a):
 		self.a=a
-		tl.pop(0)[0] if tl[0][0]=='=' else exceptshion("Assignment's '=' keyword")
+		LexicalLexicalAnalyzerCheck(self,'=')
 		self.b = Expresion()
 	def evalu(self):
 		mem[ord(self.a[0])-65 if ord(self.a[0])<91 else ord(self.a[0])-71]=self.b.evalu()
 
 class Loop():
 	def __init__(self):
-		a = tl.pop(0) if (tl[0][0]=='while' or tl[0][0]=='until') else exceptshion("Loop's 'while' or 'until' keyword")
-		assert (a[0]=='while' or a[0]=='until'),"while or until keyword "+exceptshion("d")
+		if (tl[0][0]!='while' and tl[0][0]!='until'):
+			LexicalLexicalAnalyzerCheck(self,"'while' or 'until'")
+		else:
+			a = tl.pop(0)[0]
 		self.keyword=a
 		self.b=Bool()
-		assert (tl.pop(0)[0]=='do'),"do keyword "+exceptshion()
+		LexicalLexicalAnalyzerCheck(self,'do')
 		self.cb=Code_Block()
-		assert (tl.pop(0)[0]=='end'),"end keyword "+exceptshion()
+		LexicalLexicalAnalyzerCheck(self,'end')
 	def evalu(self):
 		if(self.keyword=="while"):
 			while(self.b.evalu()):
@@ -101,9 +98,10 @@ class Loop():
 					
 class Bool():
 	def __init__(self):
-		ro = tl.pop(0)
-		#print (ro)
-		assert(10<=lexeme.index(ro[0])<=15 ),exceptshion("Boolean's relational operator")
+		if(tl[0][0] in lexeme[1]):
+			ro = tl.pop(0)
+		else:
+			LexicalLexicalAnalyzerCheck(self,"Relational Operator")
 		self.ro=ro
 		self.e1=Expresion()
 		self.e2=Expresion()
@@ -146,31 +144,31 @@ class Expresion():
 			return self.b.evalu() * self.c.evalu()
 		elif(self.a[0]=="/"):
 			return self.b.evalu() / self.c.evalu()
-		assert (False),str(self.a.tok)+"expresion messed up. "+exceptshion()
 
-def gettype(buffer,line,column):
+def gettype(buff,line,column):
 		try: 
-			return (int(buffer),line,column)
+			return (int(buff),line,column)
 		except ValueError:
 			pass
-		if(len(buffer)==1 and buffer.isalpha()):
-			return (buffer[0],line,column)
-		assert (any(buffer in _ for _ in lexeme)),"Lexical Analyzer fail. Unidentified token:'%s' found on line:%d,column:%d" % (buffer,line,column)
-		return (buffer,line,column)
+		if(len(buff)==1 and buff.isalpha()):
+			return (buff[0],line,column)
+		if not (any(buff in _ for _ in lexeme)):
+			raise TrashException("Lexical Analyzer fail. Unidentifable token:'%s' found on line:%d,column:%d" % (buff,line,column))
+		return (buff,line,column)
 			   
 def Tokenize(fileName):
 		f = open (fileName,"r")
 		data = f.read()
-		line = 1;
-		buffer = ""
+		line = 1
+		buff = ""
 		column = 1
 		for cha in data:
 			if(cha.isspace()):
-				if(len(buffer)!=0):
-					tl.append((gettype(buffer,line,column)))
-				buffer = ""
+				if(len(buff)!=0):
+					tl.append((gettype(buff,line,column)))
+				buff = ""
 			else:
-				buffer+=cha
+				buff+=cha
 			if(cha=='\n'): #windows files use something else... DosToUnix if needed
 				line+=1
 				column=0
@@ -178,8 +176,9 @@ def Tokenize(fileName):
 		f.close()
 		
 Tokenize("./../ruby.rb")
-while tl:
-	Program()
+Program()
+if tl:
+	raise TrashException("Trash found:'%s'. line:%d,column:%d" % (tl[0][0],tl[0][1],tl[0][2]))
 	
  
 
