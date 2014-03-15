@@ -145,16 +145,16 @@ class Expresion():
 		elif(self.a[0]=="/"):
 			return self.b.evalu() / self.c.evalu()
 
-def gettype(buff,line,column):
-		try: 
-			return (int(buff),line,column)
-		except ValueError:
-			pass
-		if(len(buff)==1 and buff.isalpha()):
-			return (buff[0],line,column)
-		if not (any(buff in _ for _ in lexeme)):
-			raise TrashException("Lexical Analyzer fail. Unidentifable token:'%s' found on line:%d,column:%d" % (buff,line,column))
-		return (buff,line,column)
+	def gettype(buff,line,column):
+			try: 
+				return (int(buff),line,column)
+			except ValueError:
+				pass
+			if(len(buff)==1 and buff.isalpha()):
+				return (buff[0],line,column)
+			if not (any(buff in _ for _ in lexeme)):
+				raise TrashException("Lexical Analyzer fail. Unidentifable token:'%s' found on line:%d,column:%d" % (buff,line,column))
+			return (buff,line,column)
 			   
 def Tokenize(fileName):
 		f = open (fileName,"r")
