@@ -1,0 +1,59 @@
+V "GNAT Lib v2013"
+A -gnatA
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLICIT_LOOPS
+RV NO_SECONDARY_STACK
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+
+U books%b		books.adb		dd722ed8 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U books%s		books.ads		7f5166ac EE NE OO PK
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D a-unccon.ads		20130417131022 f9eb8f06
+D books.ads		20140327213555 7f5166ac
+D books.adb		20140327213530 bf1b55b9
+D system.ads		20130417131036 90249111
+D s-secsta.ads		20130417131032 eea35a36
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+X 1 ada.ads
+16K9*Ada 19e8 6|1r6 2r5
+X 2 a-charac.ads
+16K13*Characters 18e19 6|1r10 2r9
+X 3 a-chahan.ads
+36K24*Handling 150e28 6|1w21 2r20
+X 5 books.ads
+1K9*Books 31l5 31e10 6|4b14 60l5 60t10
+3R9*Book 14r33 17r31 19r30 21r30 24c9 29e17 6|14r14 16r13 37r31 46r30 55r30
+5i4*MAX_AUTHOR_NAME_SIZE{positive} 26r31 6|18r26 19r36
+7i4*MAX_TITLE_SIZE{positive} 27r30 6|23r25 24r34
+9i4*MAX_PAGES_SIZE{positive} 11r42
+11I9*PAGES<integer> 13r74 21r43 28r18 6|13r18 55r43
+13V13*create_book{3R9} 13>26 13>45 13>63 6|10b13 31l8 31t19
+13s26 author{string} 15r16 6|11b7 18r10 19r24 21r27 21r45
+13s45 title{string} 15r38 6|12b7 23r10 24r23 26r26 26r43
+13i63 leaves{11I9} 6|13b7 29r23
+17V13*get_author{string} 17>25 6|37b13 40l8 40t18
+17r25 s{3R9} 6|37b25 39r14
+19V13*get_title{string} 19>24 6|46b13 49l8 49t17
+19r24 s{3R9} 6|46b24 48r14
+21V13*get_pages{11I9} 21>24 6|55b13 58l8 58t17
+21r24 s{3R9} 6|55b24 57r14
+26a10*author{string} 6|19m14 21m14 39r16
+27a10*title{string} 6|24m14 26m14 48r16
+28i10*leaves{11I9} 6|29m13 57r16
+X 6 books.adb
+16r7 boo{5|3R9} 19m10 21m10 24m10 26m10 29m9 30r14
+

@@ -1,0 +1,7 @@
+project Assign3 is
+
+   for Source_Files use ("books.adb", "books.ads", "test_book.adb");
+   for Main use ("test_book.adb");
+
+end Assign3;
+

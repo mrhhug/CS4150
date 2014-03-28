@@ -1,0 +1,6 @@
+project James is
+
+   for Main use ("test_book.adb");
+
+end James;
+

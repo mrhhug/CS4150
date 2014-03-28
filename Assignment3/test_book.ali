@@ -1,0 +1,70 @@
+V "GNAT Lib v2013"
+M P W=b
+A -gnatA
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+
+U test_book%b		test_book.adb		0c7cb750 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W books%s		books.adb		books.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-except.ads		20130417131019 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-ioexce.ads		20130417131020 8b9de6cd
+D a-stream.ads		20130417131021 2ca4ee37
+D a-tags.ads		20130417131022 6c0509d0
+D a-textio.ads		20130417131022 386df5d4
+D a-unccon.ads		20130417131022 f9eb8f06
+D books.ads		20140327213555 7f5166ac
+D interfac.ads		20130417131027 cb4a8015
+D i-cstrea.ads		20130417131026 8128536b
+D system.ads		20130417131036 90249111
+D s-crtl.ads		20130417131029 dfcfca61
+D s-exctab.ads		20130417131029 66e51330
+D s-ficobl.ads		20130417131029 55a71d43
+D s-finmas.ads		20130417131029 b95bb341
+D s-finroo.ads		20130417131029 4ff27390
+D s-imgint.ads		20130417131030 02dbe0c2
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-secsta.ads		20130417131032 eea35a36
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-traent.ads		20130417131033 5221ee41
+D s-unstyp.ads		20130417131034 6ae15c76
+D s-wchcon.ads		20130417131034 bfeb2e3d
+D test_book.adb		20140327215030 4b402428
+X 1 ada.ads
+16K9*Ada 19e8 31|1r13 2r12
+X 7 a-textio.ads
+49K13*Text_IO 471e16 31|1w17 2r16
+242U14*Put 31|11s7 13s7 15s7
+263U14*Put_Line 31|12s7 14s7 16s7
+X 9 books.ads
+1K9*Books 31e10 31|1w6 2r5
+3R9*Book 29e17 31|6r9 8r34
+11I9*PAGES<integer>
+13V13*create_book{3R9} 31|20s10
+17V13*get_author{string} 31|12s17
+19V13*get_title{string} 31|14s17
+21V13*get_pages{11I9} 31|16s42
+X 31 test_book.adb
+4U11*Test_Book 4b11 22l5 22t14
+6r4 boo{9|3R9} 20m4 21r17
+8U14 display_book 8b14 8>28 17l8 17t20 21s4
+8r28 s{9|3R9} 12r29 14r28 16r52
+

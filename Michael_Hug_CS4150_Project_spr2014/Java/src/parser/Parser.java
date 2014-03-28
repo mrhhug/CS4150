@@ -17,8 +17,8 @@ import lexicalanalyzer.Tokenizer;
 public class Parser
 {
     Tokenizer TokenList; 
-    /**
-     * precondition: TokenList is not null
+    /** 
+    * precondition: TokenList is not null
      * @param TokenList
      * @throws LexException if an expected lexeme is not found
      * @throws UndefinedVariable if an undefined variable exist at evaluate time
