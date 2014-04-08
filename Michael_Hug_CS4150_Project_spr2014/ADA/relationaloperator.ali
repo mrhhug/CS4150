@@ -1,0 +1,22 @@
+V "GNAT Lib v2013"
+A -gnatc
+A -gnatA
+P NO ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+
+U relationaloperator%s	relationaloperator.ads	9a2b92be EE OO PK
+
+D relationaloperator.ads  20140408034558 9a2b92be
+X 1 relationaloperator.ads
+1K9*RelationalOperator 9l5 9e23
+2E9*Relational_Operator 8e12
+3n6*EQ_OP{2E9}
+4n6*NE_OP{2E9}
+5n6*LT_OP{2E9}
+6n6*LE_OP{2E9}
+7n6*GT_OP{2E9}
+8n6*GE_OP{2E9}
+

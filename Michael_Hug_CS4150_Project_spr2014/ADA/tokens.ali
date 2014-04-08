@@ -1,0 +1,46 @@
+V "GNAT Lib v2013"
+A -gnatc
+A -gnatA
+P NO ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK
+
+U tokens%b		tokens.adb		3a3edf95 OO PK
+W tokentype%s		tokentype.ads		tokentype.ali
+
+U tokens%s		tokens.ads		d1611b27 EE OO PK
+W tokentype%s		tokentype.ads		tokentype.ali
+
+D tokens.ads		20140408034314 57b66081
+D tokens.adb		20140408040128 eb5fc4b2
+D tokentype.ads		20140408034111 86d77ba6
+X 1 tokens.ads
+4K9*Tokens 29l5 29e11 2|4b14 62l5 62t11
+6R9*Token 12r33 14r36 16r33 18r30 21c9 27e17 2|16r11 30r33 39r36 48r33 57r30
+8i4*MAX_LEXEME_LENGTH{positive} 25r30 2|19r27 22r37
+10U14*create_Token 10>28 10>48 10>67 10>94 2|10b14 24l8 24t20
+10e28 typ{3|2E9} 2|11b7
+10s48 lexeme{string} 2|12b7 19r10 20r25 20r43 22r24
+10i67 columnNumber{positive} 2|13b7
+10i94 rowNumber{positive} 2|14b7
+12V13*getTokenType{3|2E9} 12>27 2|30b13 33l8 33t20
+12r27 t{6R9} 2|30b27 32r14
+14V13*getColumnNumber{positive} 14>30 2|39b13 42l8 42t23
+14r30 t{6R9} 2|39b30 41r13
+16V13*getRowNumber{positive} 16>27 2|48b13 51l8 51t20
+16r27 t{6R9} 2|48b27 50r14
+18V13*getLexeme{string} 18>24 2|57b13 60l8 60t17
+18r24 t{6R9} 2|57b24 59r14
+23i10*rowNumber{positive} 2|50r16
+24i10*columnNumber{positive} 2|41r15
+25a10*lexeme{string} 2|20m14 22m14 59r16
+26e10*typ{3|2E9} 2|32r16
+X 2 tokens.adb
+16r7 tok{1|6R9} 20m10 22m10
+X 3 tokentype.ads
+1K9*Tokentype 1|1w6 2r6 2|1w6 2r6 3|4e14
+2E9*Token_Type 1|10r36 12r47 26r15 2|11r15 30r47 3|3e114
+
