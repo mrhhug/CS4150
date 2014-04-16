@@ -1,0 +1,7 @@
+project Michael_Hug is
+
+   for Source_Files use ("boolean_expressions.adb", "boolean_expressions.ads", "expressions.adb", "expressions.ads", "ids.adb", "ids.ads", "intepreter.adb", "interpreter.adb", "lexical_analyzers.adb", "lexical_analyzers.ads", 
+      "literal_integers.adb", "literal_integers.ads", "memory.adb", "memory.ads", "michael_hug.gpr", "parsers.ads", "programs.adb", "programs.ads", "project_4150.gpr", "statements.adb", "statements.ads", "tokens.adb", "tokens.ads");
+
+end Michael_Hug;
+

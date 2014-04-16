@@ -1,46 +1,74 @@
 V "GNAT Lib v2013"
-A -gnatc
 A -gnatA
-P NO ZX
+P ZX
 
 RN
 RV NO_IMPLEMENTATION_PRAGMAS
-RV NO_ELABORATION_CODE
 RV SPARK
 
-U tokens%b		tokens.adb		3a3edf95 OO PK
-W tokentype%s		tokentype.ads		tokentype.ali
+U tokens%b		tokens.adb		20f27c90 NE OO PK
 
-U tokens%s		tokens.ads		d1611b27 EE OO PK
-W tokentype%s		tokentype.ads		tokentype.ali
+U tokens%s		tokens.ads		85bd00f9 EE NE OO PK
 
-D tokens.ads		20140408034314 57b66081
-D tokens.adb		20140408040128 eb5fc4b2
-D tokentype.ads		20140408034111 86d77ba6
-X 1 tokens.ads
-4K9*Tokens 29l5 29e11 2|4b14 62l5 62t11
-6R9*Token 12r33 14r36 16r33 18r30 21c9 27e17 2|16r11 30r33 39r36 48r33 57r30
-8i4*MAX_LEXEME_LENGTH{positive} 25r30 2|19r27 22r37
-10U14*create_Token 10>28 10>48 10>67 10>94 2|10b14 24l8 24t20
-10e28 typ{3|2E9} 2|11b7
-10s48 lexeme{string} 2|12b7 19r10 20r25 20r43 22r24
-10i67 columnNumber{positive} 2|13b7
-10i94 rowNumber{positive} 2|14b7
-12V13*getTokenType{3|2E9} 12>27 2|30b13 33l8 33t20
-12r27 t{6R9} 2|30b27 32r14
-14V13*getColumnNumber{positive} 14>30 2|39b13 42l8 42t23
-14r30 t{6R9} 2|39b30 41r13
-16V13*getRowNumber{positive} 16>27 2|48b13 51l8 51t20
-16r27 t{6R9} 2|48b27 50r14
-18V13*getLexeme{string} 18>24 2|57b13 60l8 60t17
-18r24 t{6R9} 2|57b24 59r14
-23i10*rowNumber{positive} 2|50r16
-24i10*columnNumber{positive} 2|41r15
-25a10*lexeme{string} 2|20m14 22m14 59r16
-26e10*typ{3|2E9} 2|32r16
-X 2 tokens.adb
-16r7 tok{1|6R9} 20m10 22m10
-X 3 tokentype.ads
-1K9*Tokentype 1|1w6 2r6 2|1w6 2r6 3|4e14
-2E9*Token_Type 1|10r36 12r47 26r15 2|11r15 30r47 3|3e114
+D system.ads		20130417131036 90249111
+D tokens.ads		20140118001512 85bd00f9
+D tokens.adb		20140118001504 a54f7c69
+X 2 tokens.ads
+1K9*Tokens 39l5 39e11 3|1b14 89l5 89t11
+3E9*Token_Type 6e56 15r68 18r51 36r20 3|9r40 25r51
+3n24*DEF_TOK{3E9}
+3n33*END_TOK{3E9}
+3n42*IF_TOK{3E9}
+3n50*PUTS_TOK{3E9}
+3n60*UNTIL_TOK{3E9}
+3n71*ID_TOK{3E9}
+4n24*WHILE_TOK{3E9}
+4n35*ELSE_TOK{3E9}
+4n45*THEN_TOK{3E9}
+4n55*ASSIGN_OP{3E9}
+4n66*LIT_INT{3E9}
+4n75*ADD_TOK{3E9}
+5n24*SUB_TOK{3E9}
+5n33*MUL_TOK{3E9}
+5n42*DIV_TOK{3E9}
+5n51*EQ_TOK{3E9}
+5n59*NE_TOK{3E9}
+5n67*LT_TOK{3E9}
+5n75*LE_TOK{3E9}
+6n24*GT_TOK{3E9}
+6n32*GE_TOK{3E9}
+6n40*EOS_TOK{3E9}
+6n49*DO_TOK{3E9}
+8i4*LEXEME_SIZE{positive} 10r36 3|64r21 65r24
+10A9*Lexeme<string><integer> 14r35 20r47 26r45 28r37 33r15 3|7r35 34r47 59r45
+. 61r12 78r37
+12R9*Token 16r34 18r37 20r33 22r37 24r39 31c9 37e17 3|10r34 11r12 25r37 34r33
+. 43r37 52r40
+14V13*create_token{12R9} 14>27 14>43 15>27 15>55 3|7b13 19l8 19t20
+14a27 lex{10A9} 3|7b27 14r18
+14i43 row_number{positive} 3|7b43 15r25
+15i27 column_number{positive} 3|8b27 16r28
+15e55 tok_type{3E9} 3|9b27 17r23
+18V13*get_token_type{3E9} 18>29 3|25b13 28l8 28t22
+18r29 tok{12R9} 3|25b29 27r14
+20V13*get_lexeme{10A9} 20>25 3|34b13 37l8 37t18
+20r25 tok{12R9} 3|34b25 36r14
+22V13*get_row_number{positive} 22>29 3|43b13 46l8 46t22
+22r29 tok{12R9} 3|43b29 45r14
+24V13*get_column_number{positive} 24>31 3|52b13 55l8 55t25
+24r31 tok{12R9} 3|52b32 54r14
+26V13*to_lexeme{10A9} 26>24 3|59b13 74l8 74t17
+26s24 s{string} 3|59b24 64r10 66r24 66r30 69r24 70r23 70r29
+28V13*size_of_lexeme{positive} 28>29 3|78b13 87l8 87t22
+28a29 lex{10A9} 3|78b29 83r13
+33a10*lex{10A9} 3|14m11 36r18
+34i10*row_number{positive} 3|15m11 45r18
+35i10*column_number{positive} 3|16m11 54r18
+36e10*tok_type{3E9} 3|17m11 27r18
+X 3 tokens.adb
+11r7 tok{2|12R9} 14m7 15m7 16m7 17m7 18r14
+61a7 lex{2|10A9} 66m13 70m13 73r14
+65i14 i{integer} 66r18 66r26
+69i14 i{integer} 70r17 70r25
+80i7 size{positive} 83r17 84m10 84r18 86r14
 

@@ -1,7 +1,0 @@
-project Michael_Hug_ADA_Spr2014 is
-
-   for Source_Dirs use ("./**");
-   for Source_Files use ("arithmeticoperator.ads", "booleanexpression.ads", "expression.ads", "relationaloperator.ads", "statement.ads", "tokens.adb", "tokens.ads", "tokentype.ads", "whilestatement.ads");
-
-end Michael_Hug_ADA_Spr2014;
-

@@ -1,0 +1,15 @@
+V "GNAT Lib v2013"
+M P W=b
+A -gnatA
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U interpreter%b		intepreter.adb		f41b08ea NE OO SU
+
+D intepreter.adb	20140118001514 f41b08ea
+D system.ads		20130417131036 90249111
+X 1 intepreter.adb
+1U11*Interpreter 1b11 5l5 5t16
+
