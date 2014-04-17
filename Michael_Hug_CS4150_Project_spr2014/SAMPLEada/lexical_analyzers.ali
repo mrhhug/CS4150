@@ -1,0 +1,221 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatA
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_NESTED_FINALIZATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK
+
+U lexical_analyzers%b	lexical_analyzers.adb	1e7478f8 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
+W system.concat_4%s	s-conca4.adb		s-conca4.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+
+U lexical_analyzers%s	lexical_analyzers.ads	71957e4b EE OO PF PK
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.containers.doubly_linked_lists%s
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.finalization%s	a-finali.adb		a-finali.ali
+Z ada.iterator_interfaces%s
+W ada.streams%s		a-stream.ads		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+Z ada.unchecked_deallocation%s
+W system%s		system.ads		system.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+W tokens%s		tokens.adb		tokens.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D a-contai.ads		20130417131019 61e5e089
+D a-cdlili.ads		20130417131018 c3008bbb
+D a-cdlili.adb		20130417131018 17cec70d
+D a-except.ads		20130417131019 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-ioexce.ads		20130417131020 8b9de6cd
+D a-iteint.ads		20130417131020 7c7305e9
+D a-stream.ads		20130417131021 2ca4ee37
+D a-tags.ads		20130417131022 6c0509d0
+D a-textio.ads		20130417131022 386df5d4
+D a-unccon.ads		20130417131022 f9eb8f06
+D a-uncdea.ads		20130417131022 f15a5ed1
+D interfac.ads		20130417131027 cb4a8015
+D i-cstrea.ads		20130417131026 8128536b
+D lexical_analyzers.ads	20140118001456 3728f509
+D lexical_analyzers.adb	20140118001514 0c0965e8
+D system.ads		20130417131036 90249111
+D s-assert.ads		20130417131028 a3a4e6ab
+D s-conca4.ads		20130417131029 025fe3be
+D s-crtl.ads		20130417131029 dfcfca61
+D s-exctab.ads		20130417131029 66e51330
+D s-ficobl.ads		20130417131029 55a71d43
+D s-finmas.ads		20130417131029 b95bb341
+D s-finroo.ads		20130417131029 4ff27390
+D s-imgint.ads		20130417131030 02dbe0c2
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-secsta.ads		20130417131032 eea35a36
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-stposu.ads		20130417131032 ffeba1c5
+D s-stratt.ads		20130417131032 aedef97e
+D s-traent.ads		20130417131033 5221ee41
+D s-unstyp.ads		20130417131034 6ae15c76
+D s-wchcon.ads		20130417131034 bfeb2e3d
+D tokens.ads		20140118001512 85bd00f9
+X 1 ada.ads
+16K9*Ada 19e8 18|4r14 24r31 19|1r6 1r19 2r5 2r18
+X 2 a-charac.ads
+16K13*Characters 18e19 19|1r23 2r22
+X 3 a-chahan.ads
+36K24*Handling 150e28 19|1w34 2r33
+47V13*Is_Letter{boolean} 19|59s10
+51V13*Is_Digit{boolean} 19|12s32 85s13
+X 4 a-contai.ads
+16K13*Containers 24e19 18|4r18 24r35
+X 5 a-cdlili.ads
+45k24*Doubly_Linked_Lists 381e39 18|4w29 24r46
+49R9*List 18|28r25[24]
+74V13*Is_Empty{boolean} 19|177s30[18|24]
+146U14*Append 19|139s22[18|24] 165s19[18|24]
+156U14*Delete_First 19|188s19[18|24]
+198V13*First_Element{43|12R9} 19|187s26[18|24] 198s26[18|24]
+X 10 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[5|67]>
+X 13 a-textio.ads
+49K13*Text_IO 471e16 19|1w10 2r9
+52P9*File_Type(369R9) 19|153r20
+53n23*In_File{53E9} 19|159r26
+92U14*Open 19|159s7
+98U14*Close 19|167s7
+183V13*End_Of_File{boolean} 19|160s17
+244U14*Get_Line 19|161s10
+X 18 lexical_analyzers.ads
+6K9*Lexical_Analyzers 31l5 31e22 19|4b14 201l5 201t22
+8R9*Lexical_Analyzer 12r67 14r34 16r42 19r42 26c9 29e17 19|125r40 150r45
+. 152r12 175r34 184r42 195r42
+10X4*lexical_exception 19|81r19 89r19 116r16
+12V13*create_lexical_analyzer{8R9} 12>38 19|149b13 169l8 169t31
+12s38 file_name{string} 19|149b38 159r35
+14V13*more_tokens{boolean} 14>26 17s16 20s16 19|175b13 178l8 178t19
+14r26 lex{8R9} 19|175b26 177r40
+16U14*get_next_token 16=30 16<60 19|184b14 189l8 189t22
+16r30 lex{8R9} 17r29 19|184b30 187r41 188m33 188r33
+16r60 tok{43|12R9} 19|184b61 187m7
+19V13*get_lookahead_token{43|12R9} 19>34 19|195b13 199l8 199t27
+19r34 lex{8R9} 20r29 19|195b34 198r41
+24K12 Token_Lists[5|45] 28r13 19|139r10 165r7 177r18 187r14 188r7 198r14
+28r10*l{5|49R9[24]} 19|139m34 165m31 177r44 187r45 188m37 198r45
+X 19 lexical_analyzers.adb
+7V13 all_digits{boolean} 7b13 7>25 7>39 16l8 16t18 86s13
+7s25 s{string} 12r42
+7i39 size{positive} 12r18 15r18
+9i7 i{positive} 12r13 12r44 13m10 13r15 15r14
+20V13 is_white_space{boolean} 20b13 20>29 24l8 24t22 31s43 44s43
+20e29 ch{character} 23r14 23r40
+28U14 skip_white_space 28b14 28>32 28=49 34l8 34t24 134s7 141s10
+28s32 line{string} 31r22 31r59
+28i49 index{natural} 31r13 31r65 32m10 32r19
+38V13 get_lexeme{43|10A9} 38b13 38>25 38>42 49l8 49t18 136s21
+38s25 line{string} 44r18 44r59 47r23
+38i42 column_number{natural} 40r22 47r29
+40i7 i{positive} 44r13 44r65 45m11 45r16 47r46
+41a7 l{43|10A9} 47m7 48r14
+53V13 determine_token_type{43|3E9} 53b13 53>35 53>49 54>35 121l8 121t28 137s22
+53a35 l{43|10A9} 59r21 60r29 62r16 64r16 66r16 68r16 70r16 72r16 74r16 76r16
+. 78r16 85r23 86r32 86r52 93r13 95r13 97r13 99r13 101r13 103r13 105r13 107r13
+. 109r13 111r13 113r13
+53i49 line_number{positive} 82r30 90r30 117r27
+54i35 column_number{positive} 83r31 91r31 118r28
+56e7 tok_type{43|3E9} 61m13 63m13 65m13 67m13 69m13 71m13 73m13 75m13 77m13
+. 79m13 87m13 94m10 96m10 98m10 100m10 102m10 104m10 106m10 108m10 110m10
+. 112m10 114m10 120r14
+125U14 process_line 125b14 125=28 125>58 126>18 143l8 143t20 162s10
+125r28 lex{18|8R9} 139m30 139r30
+125s58 line{string} 134r25 135r30 136r33 141r28
+126i18 line_number{positive} 137r53 138r40
+128i7 column_number{positive} 134m31 134r31 135r13 136r39 137r66 138r53 140m10
+. 140r27 141m34 141r34
+129a7 current{43|10A9} 136m10 137r44 138r31 140r59
+130e7 tok_type{43|3E9} 137m10 138r68
+131r7 tok{43|12R9} 138m10 139r37
+152r7 lex{18|8R9} 162m24 162r24 165m27 165r27 168r14
+153p7 source_code{13|52P9} 159m13 159r13 160r30 161r20 167m14 167r14
+154a7 line{string} 161m33 162r29
+155i7 last{natural} 161m39 162r40
+156i7 line_number{positive} 162r47 163m10 163r25 165r66
+X 43 tokens.ads
+1K9*Tokens 18|1w6 2r5 43|39e11
+3E9*Token_Type 19|54r70 56r17 130r17 43|6e56
+3n24*DEF_TOK{3E9} 19|75r25
+3n33*END_TOK{3E9} 19|71r25
+3n42*IF_TOK{3E9} 19|63r25
+3n50*PUTS_TOK{3E9} 19|73r25
+3n60*UNTIL_TOK{3E9} 19|65r25
+3n71*ID_TOK{3E9} 19|61r25
+4n24*WHILE_TOK{3E9} 19|77r25
+4n35*ELSE_TOK{3E9} 19|69r25
+4n45*THEN_TOK{3E9} 19|67r25
+4n55*ASSIGN_OP{3E9} 19|94r22
+4n66*LIT_INT{3E9} 19|87r25
+4n75*ADD_TOK{3E9} 19|96r22
+5n24*SUB_TOK{3E9} 19|98r22
+5n33*MUL_TOK{3E9} 19|100r22
+5n42*DIV_TOK{3E9} 19|102r22
+5n51*EQ_TOK{3E9} 19|104r22
+5n59*NE_TOK{3E9} 19|106r22
+5n67*LT_TOK{3E9} 19|108r22
+5n75*LE_TOK{3E9} 19|110r22
+6n24*GT_TOK{3E9} 19|112r22
+6n32*GE_TOK{3E9} 19|114r22
+6n40*EOS_TOK{3E9} 19|166r27
+6n49*DO_TOK{3E9} 19|79r25
+10A9*Lexeme<string><integer> 19|38r76 41r10 53r41 129r16
+12R9*Token 18|16r69 19r67 24r67 19|131r12 184r70 195r67 43|37e17
+14V13*create_token{12R9} 19|138s17 165s34
+26V13*to_lexeme{10A9} 19|47s12 62s20 64s20 66s20 68s20 70s20 72s20 74s20
+. 76s20 78s20 93s17 95s17 97s17 99s17 101s17 103s17 105s17 107s17 109s17
+. 111s17 113s17 165s48
+28V13*size_of_lexeme{positive} 19|60s13 86s36 140s43
+
