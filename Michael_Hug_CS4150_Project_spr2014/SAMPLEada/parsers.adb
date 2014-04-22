@@ -5,13 +5,13 @@ package body Parsers is
 
    function getCodeBlock return Code_Block;
    function isValidStartOfStatement(tok: in Token) return Boolean;
-   function getStatement return Statement;
-   function getWhileStatement return Statement;
-   function getUntilStatement return Statement;
-   function getIfStatement return Statement;
-   function getPrintStatement return Statement;
-   function getAssignmentStatement return Statement;
-   function getExpression return Expression;
+   function getStatement return Statement_Access;
+   function getWhileStatement return Statement_Access;
+   function getUntilStatement return Statement_Access;
+   function getIfStatement return Statement_Access;
+   function getPrintStatement return Statement_Access;
+   function getAssignmentStatement return Statement_Access;
+   function getExpression return Expression_Access;
    function getArithmeticOperator return Arithmetic_Operator;
    function getBooleanExpression return Boolean_Expression;
    function getRelationalOperator return Relational_Operator;
@@ -44,7 +44,7 @@ package body Parsers is
    function getCodeBlock return Code_Block is
 
       cb : Code_Block;
-      stmt : Statement := getStatement;
+      stmt : Statement_Access := getStatement;
       tok : Token;
 
    begin
@@ -62,9 +62,9 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getStatement return Statement is
+   function getStatement return Statement_Access is
 
-      stmt : Statement;
+      stmt : Statement_Access;
 
    begin
       return stmt;
@@ -72,9 +72,9 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getWhileStatement return Statement is
+   function getWhileStatement return Statement_Access is
 
-      stmt : Statement;
+      stmt : Statement_Access;
 
    begin
       return stmt;
@@ -82,9 +82,9 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getUntilStatement return Statement is
+   function getUntilStatement return Statement_Access is
 
-      stmt : Statement;
+      stmt : Statement_Access;
 
    begin
       return stmt;
@@ -92,9 +92,9 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getIfStatement return Statement is
+   function getIfStatement return Statement_Access is
 
-      stmt : Statement;
+      stmt : Statement_Access;
 
    begin
       return stmt;
@@ -102,10 +102,10 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getPrintStatement return Statement is
+   function getPrintStatement return Statement_Access is
 
       tok : Token := getNextToken;
-      expr : Expression :=getExpression;
+      expr : Expression_Access :=getExpression;
 
    begin
       match (tok, PUTS_TOK);
@@ -114,21 +114,25 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getAssignmentStatement return Statement is
+   function getAssignmentStatement return Statement_Access is
 
       tok : Token := getNextToken;
       var : Id;
+      --expr : Expression_Access :=getExpression;
+      --var : Id := create_id(get_char(get_lexeme(tok)));
+      --char : Character
 
    begin
       match (tok, ID_TOK);
-      var := create_id(get_char(get_lexeme(tok)));
+      --var := create_id();
+      return create_assignment_statement(var, expr);
    end getAssignmentStatement;
 
    ----------------------------------------------------------------------------
 
-   function getExpression return Expression is
+   function getExpression return Expression_Access is
 
-      expr : Expression;
+      expr : Expression_Access;
       tok : Token := getLookaheadToken;
 
    begin
@@ -151,24 +155,13 @@ package body Parsers is
    function getBooleanExpression return Boolean_Expression is
 
       op : Relational_Operator := getRelationalOperator;
-      expr1 : Expression := getExpression;
-      expr2 : Expression := getExpression;
+      expr1 : Expression_Access := getExpression;
+      expr2 : Expression_Access := getExpression;
 
    begin
-      return Boolean_Expression;
+      return create_boolean_expression(op, expr1, expr2);
    end getBooleanExpression;
 
    ----------------------------------------------------------------------------
-
-   function getUntilStatement return Statement is
-
-      stmt : Statement;
-
-   begin
-      return stmt;
-   end getUntilStatement;
-
-
-
 
 end Parsers;
