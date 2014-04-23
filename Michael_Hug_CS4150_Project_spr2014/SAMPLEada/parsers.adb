@@ -116,15 +116,18 @@ package body Parsers is
 
    function getAssignmentStatement return Statement_Access is
 
-      tok : Token := getNextToken;
+      tok : Token;
       var : Id;
-      --expr : Expression_Access :=getExpression;
-      --var : Id := create_id(get_char(get_lexeme(tok)));
-      --char : Character
+      expr : Expression_Access;
+      char : Character;
 
    begin
+      tok :=getNextToken;
       match (tok, ID_TOK);
-      --var := create_id();
+      var := create_id(get_lexeme(tok)(1));
+      tok :=getNextToken;
+      match (tok, ASSIGN_OP);
+      expr :=getExpression;
       return create_assignment_statement(var, expr);
    end getAssignmentStatement;
 
@@ -133,9 +136,26 @@ package body Parsers is
    function getExpression return Expression_Access is
 
       expr : Expression_Access;
-      tok : Token := getLookaheadToken;
+      tok : Token;
+      op : ArithmeticOperator;
+      expr1 : Expression_Access;
+      expr2 :Expression_Access;
 
    begin
+      tok:= getLookaheadToken;
+
+      if get_token_type(tok)=ID_TOK then
+         tok := getNextToken;
+         expr := create_id(get_lexeme(tok)(1));
+      elsif get_token_type(tok)=LIT_INT then
+         tok := getNextToken;
+         expr := create_literal_integer(Integer'Value(get_lexeme(tok)));
+      else
+         op := getArithmeticOperator;
+         expr1 := getExpression;
+         expr2 := getExpression;
+      end if;
+
       return expr;
    end getExpression;
 
