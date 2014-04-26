@@ -1,5 +1,5 @@
-with Statements,Tokens,Expressions,Boolean_Expressions,Ids;
-use Statements, Tokens,Expressions,Boolean_Expressions,Ids;
+with Statements,Tokens,Expressions,Boolean_Expressions,Ids,Literal_Integers;
+use Statements, Tokens,Expressions,Boolean_Expressions,Ids,Literal_Integers;
 
 package body Parsers is
 
@@ -24,10 +24,12 @@ package body Parsers is
    -------------------
 
    function create_parser (file_name: in String) return Parser is
+
+      Parse : Parser;
+
    begin
-      --  Generated stub: replace with real body!
-      raise Program_Error with "Unimplemented function create_parser";
-      return create_parser (file_name);
+      Parse.lex:=create_lexical_analyzer(file_name);
+      return Parse;
    end create_parser;
 
    -----------
@@ -35,8 +37,22 @@ package body Parsers is
    -----------
 
    procedure parse (p: in out Parser; prog: out Program) is
+
+      tok : Token;
+      cb : Code_Block;
+
    begin
-      raise Program_Error with "Unimplemented function create_parser";
+      tok := get_next_token(p.lex);
+      match (tok, DEF_TOK);
+      cb := getCodeBlock;
+      tok := get_next_token;
+      match (tok, END_TOK);
+      tok := get_next_token;
+      if (get_token_type(tok) /= EOS_TOK) then
+         raise parser_exception("garbage at end of program");
+      end if;
+      return create_program(cb);
+
    end parse;
 
    ----------------------------------------------------------------------------
@@ -137,7 +153,7 @@ package body Parsers is
 
       expr : Expression_Access;
       tok : Token;
-      op : ArithmeticOperator;
+      op : Arithmetic_Operator;
       expr1 : Expression_Access;
       expr2 :Expression_Access;
 
@@ -146,14 +162,15 @@ package body Parsers is
 
       if get_token_type(tok)=ID_TOK then
          tok := getNextToken;
-         expr := create_id(get_lexeme(tok)(1));
+         expr := create_var_expression(create_id(get_lexeme(tok)(1)));
       elsif get_token_type(tok)=LIT_INT then
          tok := getNextToken;
-         expr := create_literal_integer(Integer'Value(get_lexeme(tok)));
+         expr := create_const_expression(create_literal_integer(Integer'Value (get_lexeme(tok)) ));
       else
          op := getArithmeticOperator;
          expr1 := getExpression;
          expr2 := getExpression;
+         expr := create_binary_expression(op,expr1,expr2);
       end if;
 
       return expr;
