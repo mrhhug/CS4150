@@ -1,5 +1,4 @@
 V "GNAT Lib v2013"
-M P W=b
 A -fstack-check=specific
 A -gnato
 A -gnatVn
@@ -13,27 +12,28 @@ RN
 RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTION_PROPAGATION
 RV NO_EXCEPTIONS
-RV NO_IO
 RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
 RV NO_NESTED_FINALIZATION
-RV NO_SECONDARY_STACK
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK
 
-U interpreter%b		interpreter.adb		e6da1ee8 NE OO SU
-W ada%s			ada.ads			ada.ali
+U programs%b		programs.adb		e5e337d5 NE OO PK
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
-W ada.text_io%s		a-textio.adb		a-textio.ali
-W lexical_analyzers%s	lexical_analyzers.adb	lexical_analyzers.ali
-W parsers%s		parsers.adb		parsers.ali
-W programs%s		programs.adb		programs.ali
 W system%s		system.ads		system.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+
+U programs%s		programs.ads		c22d5735 EE NE OO PK
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W statements%s		statements.adb		statements.ali
+W system%s		system.ads		system.ali
 
 D ada.ads		20130417131023 3ffc8e18
 D a-charac.ads		20130417131019 2d3ec45b
@@ -42,27 +42,19 @@ D a-contai.ads		20130417131019 61e5e089
 D a-cdlili.ads		20130417131018 c3008bbb
 D a-except.ads		20130417131019 10fcae55
 D a-finali.ads		20130417131020 52ecdc1b
-D a-ioexce.ads		20130417131020 8b9de6cd
 D a-iteint.ads		20130417131020 7c7305e9
 D a-stream.ads		20130417131021 2ca4ee37
 D a-tags.ads		20130417131022 6c0509d0
-D a-textio.ads		20130417131022 386df5d4
 D a-unccon.ads		20130417131022 f9eb8f06
 D boolean_expressions.ads  20140118001504 2e653849
 D expressions.ads	20140118001458 14aaf83c
 D ids.ads		20140118001504 5d333c6d
-D interfac.ads		20130417131027 cb4a8015
-D i-cstrea.ads		20130417131026 8128536b
-D interpreter.adb	20140118001502 60b74a36
-D lexical_analyzers.ads	20140118001456 3728f509
 D literal_integers.ads	20140118001504 0f806a63
-D parsers.ads		20140118001502 24f71cb9
 D programs.ads		20140118001504 bd23e6ef
+D programs.adb		20140118001502 58c0d13a
 D statements.ads	20140118001502 7f0eb1da
 D system.ads		20130417131036 90249111
-D s-crtl.ads		20130417131029 dfcfca61
 D s-exctab.ads		20130417131029 66e51330
-D s-ficobl.ads		20130417131029 55a71d43
 D s-finmas.ads		20130417131029 b95bb341
 D s-finroo.ads		20130417131029 4ff27390
 D s-parame.ads		20130417131032 b6e20cc0
@@ -78,36 +70,21 @@ D s-stposu.ads		20130417131032 ffeba1c5
 D s-stratt.ads		20130417131032 aedef97e
 D s-traent.ads		20130417131033 5221ee41
 D s-unstyp.ads		20130417131034 6ae15c76
-D s-wchcon.ads		20130417131034 bfeb2e3d
-D tokens.ads		20140118001512 85bd00f9
-X 1 ada.ads
-16K9*Ada 19e8 19|1r44 1r57 2r43 2r56
-X 6 a-except.ads
-53K13*Exceptions 355e19 19|1w61 2r60
-107V13*Exception_Information{string} 19|15s17 17s17
-X 9 a-iteint.ads
+X 8 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[5|67]>
-X 12 a-textio.ads
-49K13*Text_IO 471e16 19|1w48 2r47
-263U14*Put_Line 19|15s7 17s7 19s7
-X 19 interpreter.adb
-4U11*Interpreter 4b11 20l5 20t16
-6r4 p{22|6R9} 10m4 11m11 11r11
-7r4 prog{23|6R9} 11m14 12r13
-14r9 e{6|66R9} 15r40
-16r9 e{6|66R9} 17r40
-X 20 lexical_analyzers.ads
-6K9*Lexical_Analyzers 19|1w25 2r24 20|31e22
-10X4*lexical_exception 19|14r12
-X 22 parsers.ads
-4K9*Parsers 19|1w6 2r5 22|20e12
-6R9*Parser 19|6r7 22|18e17
-8X4*parser_exception 19|16r12
-10V13*create_parser{6R9} 19|10s9
-12U14*parse 19|11s4
-X 23 programs.ads
-4K9*Programs 19|1w15 2r14 23|18e13
-6R9*Program 19|7r10 23|16e17
-10U14*execute 19|12s4
+X 16 programs.ads
+4K9*Programs 18l5 18e13 17|1b14 23l5 23t13
+6R9*Program 8r55 10r32 13c9 16e17 17|7r55 8r13 18r32
+8V13*create_program{6R9} 8>29 17|7b13 12l8 12t22
+8r29 cb{18|15R9} 17|7b29 10r18
+10U14*execute 10>23 17|18b14 21l8 21t15
+10r23 prog{6R9} 17|18b23 20r16
+15r10*cb{18|15R9} 17|10m12 20r21
+X 17 programs.adb
+8r7 prog{16|6R9} 10m7 11r14
+X 18 statements.ads
+6K9*Statements 16|1w6 2r5 18|70e15
+15R9*Code_Block 16|8r36 15r14 17|7r36 18|68e17
+39U14*execute 17|20s7
 

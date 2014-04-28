@@ -1,0 +1,224 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatc
+A -gnatA
+P NO ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_ENUMERATION_MAPS
+RV NO_EXCEPTIONS
+RV NO_NESTED_FINALIZATION
+RV NO_RECURSION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK
+
+U parsers%b		parsers.adb		655ca747 OO PK
+W boolean_expressions%s	boolean_expressions.adb	boolean_expressions.ali
+W expressions%s		expressions.adb		expressions.ali
+W ids%s			ids.adb			ids.ali
+W literal_integers%s	literal_integers.adb	literal_integers.ali
+W statements%s		statements.adb		statements.ali
+W tokens%s		tokens.adb		tokens.ali
+
+U parsers%s		parsers.ads		aefc0f5f EE OO PK
+W lexical_analyzers%s	lexical_analyzers.adb	lexical_analyzers.ali
+W programs%s		programs.adb		programs.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D a-contai.ads		20130417131019 61e5e089
+D a-cdlili.ads		20130417131018 c3008bbb
+D a-finali.ads		20130417131020 52ecdc1b
+D a-iteint.ads		20130417131020 7c7305e9
+D a-stream.ads		20130417131021 2ca4ee37
+D boolean_expressions.ads  20140118001504 2e653849
+D expressions.ads	20140118001458 14aaf83c
+D ids.ads		20140118001504 5d333c6d
+D lexical_analyzers.ads	20140118001456 3728f509
+D literal_integers.ads	20140118001504 0f806a63
+D parsers.ads		20140118001502 24f71cb9
+D parsers.adb		20140428013318 d3649ca6
+D programs.ads		20140118001504 bd23e6ef
+D statements.ads	20140118001502 7f0eb1da
+D system.ads		20130417131036 90249111
+D s-finmas.ads		20130417131029 b95bb341
+D s-finroo.ads		20130417131029 4ff27390
+D s-pooglo.ads		20130417131032 542f33d0
+D s-stoele.ads		20130417131032 facd7d98
+D s-stopoo.ads		20130417131032 7b8fbeee
+D tokens.ads		20140118001512 85bd00f9
+X 7 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[5|67]>
+X 9 boolean_expressions.ads
+4K9*Boolean_Expressions 24e24 15|1w36 2r36
+6E9*Relational_Operator 6e74 15|17r64 249r11 262r64
+6n33*EQ_OP{6E9} 15|270r29
+6n40*NE_OP{6E9} 15|269r29
+6n47*LT_OP{6E9} 15|271r29
+6n54*LE_OP{6E9} 15|272r29
+6n61*GT_OP{6E9} 15|273r29
+6n68*GE_OP{6E9} 15|274r29
+8R9*Boolean_Expression 22e17 15|16r63 111r14 131r14 151r14 247r63
+10V13*create_boolean_expression{8R9} 15|257s12
+X 10 expressions.ads
+4K9*Expressions 40e16 15|1w24 2r24
+6E9*Arithmetic_Operator 6e64 15|15r64 208r12 230r64
+6n33*ADD_OP{6E9} 15|237r30
+6n41*SUB_OP{6E9} 15|238r30
+6n49*MUL_OP{6E9} 15|239r30
+6n57*DIV_OP{6E9} 15|240r30
+12P9*Expression_Access(10R9) 15|14r56 175r14 190r14 204r56 206r14 209r15
+. 210r14 250r15 251r15
+14V13*create_binary_expression{12P9} 15|224s16
+19V13*create_var_expression{12P9} 15|216s16
+21V13*create_const_expression{12P9} 15|219s16
+X 11 ids.ads
+4K9*Ids 20e8 15|1w56 2r56
+6R9*Id 18e14 15|189r13
+8V13*create_id{6R9} 15|195s14 216s38
+X 12 lexical_analyzers.ads
+6K9*Lexical_Analyzers 31e22 14|1w6 2r5
+8R9*Lexical_Analyzer 29e17 14|17r15
+12V13*create_lexical_analyzer{8R9} 15|31s18
+16U14*get_next_token 15|45s7 48s7 50s7 215s10 218s10 235s7 267s7
+19V13*get_lookahead_token{24|12R9} 15|213s13
+X 13 literal_integers.ads
+1K9*Literal_Integers 15e21 15|1w60 2r60
+5V13*create_literal_integer{3R9} 15|219s40
+X 14 parsers.ads
+4K9*Parsers 20l5 20e12 15|4b14 305l5 305t12
+6R9*Parser 10r57 12r31 15c9 18e17 15|14r39 15r47 16r46 17r47 26r57 28r15
+. 39r31 204r39 230r47 247r46 262r47
+8X4*parser_exception 15|52r16 101r16 241r31 275r31 285r16
+10V13*create_parser{6R9} 10>28 15|26b13 33l8 33t21
+10s28 file_name{string} 15|26b28 31r42
+12U14*parse 12=21 12<39 15|39b14 55l8 55t13
+12r21 p{6R9} 15|39b21 45m22 45r22 48m22 48r22 50m22 50r22
+12r39 prog{16|6R9} 15|39b39 54m7
+17r10*lex{12|8R9} 15|31m13 45m24 48m24 50m24 213r35 215m27 218m27 235m24
+. 267m24
+X 15 parsers.adb
+6V13 getCodeBlock{17|15R9} 47s13 59b13 70l8 70t20 120s12 140s13 161s13 164s13
+7V13 isValidStartOfStatement{boolean} 7>37 74b13 79l8 79t31
+7r37 tok{24|12R9} 74b37 77r29 77r62 77r95 78r22 78r58
+8V13 getStatement{17|13P9} 66s14 83b13 104l8 104t20
+9V13 getWhileStatement{17|13P9} 99s18 108b13 124l8 124t25
+10V13 getUntilStatement{17|13P9} 97s18 128b13 144l8 144t25
+11V13 getIfStatement{17|13P9} 93s18 148b13 168l8 168t22
+12V13 getPrintStatement{17|13P9} 95s18 172b13 182l8 182t25
+13V13 getAssignmentStatement{17|13P9} 91s18 186b13 200l8 200t30
+14U14 getExpression 14=29 14<47 204b14 222s10 223s10 226l8 226t21
+14r29 p{14|6R9} 204b29 213r33 215m25 215r25 218m25 218r25 222m24 223m24
+14p47 ea{10|12P9} 204b47 216m10 219m10 224m10
+15U14 getArithmeticOperator 15=37 15<55 230b14 243l8 243t29
+15r37 p{14|6R9} 230b37 235m22 235r22
+15e55 ao{10|6E9} 230b55 237m26 238m26 239m26 240m26
+16U14 getBooleanExpression 16=36 16<54 247b14 258l8 258t28
+16r36 p{14|6R9} 247b36 254m29
+16r54 op{9|8R9} 247b54 257m7
+17U14 getRelationalOperator 17=37 17<55 254s7 262b14 277l8 277t29
+17r37 p{14|6R9} 262b37 267m22 267r22
+17e55 op{9|6E9} 262b55 269m25 270m25 271m25 272m25 273m25 274m25
+18U14 match 18>20 18>35 46s7 49s7 116s7 119s7 122s7 136s7 139s7 142s7 157s7
+. 160s7 163s7 166s7 179s7 194s7 197s7 281b14 287l8 287t13
+18r20 tok{24|12R9} 281b21 284r25 285r113 285r171
+18e35 tt{24|3E9} 281b36 284r33 285r55
+19V13 LexemeToString{string} 19>29 219s78 291b13 301l8 301t22
+19a29 lex{24|10A9} 291b29 293r40 298r20
+28r7 Parse{14|6R9} 31m7 32r14
+41r7 tok{24|12R9} 45m28 46r14 48m28 49r14 50m28 51r26
+42r7 cb{17|15R9} 47m7 54r28
+61r7 cb{17|15R9} 67m11 67r11 69r14
+62p7 stmt{17|13P9} 66m7 67r14
+63r7 tok{24|12R9}
+85p7 stmt{17|13P9} 91m10 93m10 95m10 97m10 99m10 103r14
+86r7 tok{24|12R9} 90r25 92r28 94r28 96r28 98r28 101r99 101r157
+110r7 tok{24|12R9} 116r13 119r13 122r13
+111r7 expr{9|8R9} 123r37
+112r7 cb{17|15R9} 120m7 123r42
+130r7 tok{24|12R9} 136r13 139r13 142r13
+131r7 expr{9|8R9} 143r37
+132r7 cb{17|15R9} 140m7 143r42
+150r7 tok{24|12R9} 157r14 160r14 163r14 166r14
+151r7 expr{9|8R9} 167r34
+152r7 cb1{17|15R9} 161m7 167r39
+153r7 cb2{17|15R9} 164m7 167r43
+174r7 tok{24|12R9} 179r14
+175p7 expr{10|12P9} 181r37
+188r7 tok{24|12R9} 194r14 195r35 197r14
+189r7 var{11|6R9} 195m7 199r42
+190p7 expr{10|12P9} 199r47
+206p7 expr{10|12P9}
+207r7 tok{24|12R9} 213m7 214r25 215m31 216r59 217r28 218m31 219r104
+208e7 op{10|6E9} 224r41
+209p7 expr1{10|12P9} 222m26 222r26 224r44
+210p7 expr2{10|12P9} 223m26 223r26 224r50
+232r7 tok{24|12R9} 235m28 236r27 241r124 241r182
+249e7 ro{9|6E9} 254m31 257r38
+250p7 expr1{10|12P9} 257r42
+251p7 expr2{10|12P9} 257r49
+264r7 tok{24|12R9} 267m28 268r27 275r124 275r182
+293i7 size{positive} 294r28 297r35
+294a7 Str{string} 298m10 300r14
+297i11 i{integer} 298r14 298r24
+X 16 programs.ads
+4K9*Programs 14|1w25 2r24 16|18e13
+6R9*Program 14|12r49 15|39r49 16|16e17
+8V13*create_program{6R9} 15|54s13
+X 17 statements.ads
+6K9*Statements 15|1w6 2r5 17|70e15
+13P9*Statement_Access(11R9) 15|8r33 9r38 10r38 11r35 12r38 13r43 62r14 83r33
+. 85r14 108r38 128r38 148r35 172r38 186r43
+15R9*Code_Block 15|6r33 42r12 59r33 61r12 112r11 132r11 152r12 153r12 17|68e17
+17V13*create_assignment_statement{13P9} 15|199s14
+21V13*create_if_statement{13P9} 15|167s14
+24V13*create_print_statement{13P9} 15|181s14
+27V13*create_while_statement{13P9} 15|123s14
+30V13*create_until_statement{13P9} 15|143s14
+36U14*add 15|67s7
+X 24 tokens.ads
+1K9*Tokens 15|1w17 2r17 24|39e11
+3E9*Token_Type 15|18r42 281r43 285r38 24|6e56
+3n24*DEF_TOK{3E9} 15|46r19
+3n33*END_TOK{3E9} 15|49r19 122r17 142r17 166r19
+3n42*IF_TOK{3E9} 15|77r36 92r33 157r19
+3n50*PUTS_TOK{3E9} 15|78r65 94r33 179r19
+3n60*UNTIL_TOK{3E9} 15|78r29 96r33 136r17
+3n71*ID_TOK{3E9} 15|77r69 90r30 194r19 214r30
+4n24*WHILE_TOK{3E9} 15|77r102 98r33 116r17
+4n35*ELSE_TOK{3E9} 15|163r19
+4n45*THEN_TOK{3E9} 15|160r19
+4n55*ASSIGN_OP{3E9} 15|197r19
+4n66*LIT_INT{3E9} 15|217r33
+4n75*ADD_TOK{3E9} 15|237r15
+5n24*SUB_TOK{3E9} 15|238r15
+5n33*MUL_TOK{3E9} 15|239r15
+5n42*DIV_TOK{3E9} 15|240r15
+5n51*EQ_TOK{3E9} 15|270r15
+5n59*NE_TOK{3E9} 15|269r15
+5n67*LT_TOK{3E9} 15|271r15
+5n75*LE_TOK{3E9} 15|272r15
+6n24*GT_TOK{3E9} 15|273r15
+6n32*GE_TOK{3E9} 15|274r15
+6n40*EOS_TOK{3E9} 15|51r34
+6n49*DO_TOK{3E9} 15|119r17 139r17
+10A9*Lexeme<string><integer> 15|19r37 291r37
+12R9*Token 15|7r45 18r28 41r13 63r13 74r45 86r13 110r13 130r13 150r13 174r13
+. 188r13 207r13 232r13 264r13 281r29 24|37e17
+18V13*get_token_type{3E9} 15|51s11 77s14 77s47 77s80 78s7 78s43 90s10 92s13
+. 94s13 96s13 98s13 214s10 217s13 236s12 268s12 284s10
+20V13*get_lexeme{10A9} 15|195s24 216s48 219s93
+22V13*get_row_number{positive} 15|101s84 241s109 275s109 285s98
+24V13*get_column_number{positive} 15|101s139 241s164 275s164 285s153
+28V13*size_of_lexeme{positive} 15|293s25
+

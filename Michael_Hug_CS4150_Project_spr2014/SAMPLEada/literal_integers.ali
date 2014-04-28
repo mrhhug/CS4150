@@ -1,0 +1,31 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatA
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U literal_integers%b	literal_integers.adb	f561ef8f NE OO PK
+
+U literal_integers%s	literal_integers.ads	0f806a63 EE NE OO PK
+
+D literal_integers.ads	20140118001504 0f806a63
+D literal_integers.adb	20140118001512 fae185ec
+D system.ads		20130417131036 90249111
+X 1 literal_integers.ads
+1K9*Literal_Integers 15l5 15e21 2|1b14 25l5 25t21
+3R9*Literal_Integer 5r63 7r31 10c9 13e17 2|8r44 9r11 20r31
+5V13*create_literal_integer{3R9} 5>37 2|7b13 14l8 14t30
+5i37 value{integer} 2|7b37 12r19
+7V13*get_value{integer} 7>24 2|20b13 23l8 23t17
+7r24 li{3R9} 2|20b24 22r14
+12i10*value{integer} 2|12m10 22r17
+X 2 literal_integers.adb
+9r7 li{1|3R9} 12m7 13r14
+

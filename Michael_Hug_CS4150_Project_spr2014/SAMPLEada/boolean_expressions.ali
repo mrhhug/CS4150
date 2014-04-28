@@ -1,0 +1,58 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatA
+P ZX
+
+RN
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+
+U boolean_expressions%b	boolean_expressions.adb	df11c7b4 NE OO PK
+
+U boolean_expressions%s	boolean_expressions.ads	3acfc075 EE NE OO PK
+W expressions%s		expressions.adb		expressions.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D boolean_expressions.ads  20140118001504 2e653849
+D boolean_expressions.adb  20140118001502 f174fffd
+D expressions.ads	20140118001458 14aaf83c
+D ids.ads		20140118001504 5d333c6d
+D literal_integers.ads	20140118001504 0f806a63
+D system.ads		20130417131036 90249111
+X 4 boolean_expressions.ads
+4K9*Boolean_Expressions 24l5 24e24 5|1b14 45l5 45t24
+6E9*Relational_Operator 6e74 10r47 19r14 5|7r47
+6n33*EQ_OP{6E9} 5|29r15
+6n40*NE_OP{6E9} 5|31r15
+6n47*LT_OP{6E9} 5|35r15
+6n54*LE_OP{6E9} 5|33r15
+6n61*GT_OP{6E9} 5|39r15
+6n68*GE_OP{6E9} 5|37r15
+8R9*Boolean_Expression 12r47 14r32 17c9 22e17 5|9r47 10r13 23r32
+10V13*create_boolean_expression{8R9} 10>40 11>40 11>47 5|7b13 17l8 17t33
+10e40 op{6E9} 5|7b40 13r18
+11p40 expr1{6|12P9} 5|8b40 14r21
+11p47 expr2{6|12P9} 5|8b47 15r21
+14V13*evaluate{boolean} 14>23 5|23b13 43l8 43t16
+14r23 expr{8R9} 5|23b23 28r12 30r33 30r57 32r33 32r58 34r33 34r58 36r33 36r57
+. 38r33 38r58 40r33 40r57
+19e10*op{6E9} 5|13m12 28r17
+20p10*expr1{6|12P9} 5|14m12 30r38 32r38 34r38 36r38 38r38 40r38
+21p10*expr2{6|12P9} 5|15m12 30r62 32r63 34r63 36r62 38r63 40r62
+X 5 boolean_expressions.adb
+10r7 expr{4|8R9} 13m7 14m7 15m7 16r14
+25b7 result{boolean} 30m13 32m13 34m13 36m13 38m13 40m13 42r14
+X 6 expressions.ads
+4K9*Expressions 4|1w6 2r5 6|40e16
+12P9*Expression_Access(10R9) 4|11r57 20r17 21r17 5|8r57
+23V13*evaluate{integer} 5|30s23 30s47 32s23 32s48 34s23 34s48 36s23 36s47
+. 38s23 38s48 40s23 40s47
+

@@ -1,0 +1,54 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatA
+P ZX
+
+RN
+RV NO_IMPLICIT_LOOPS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK
+
+U memory%b		memory.adb		e382efa3 OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+
+U memory%s		memory.ads		e3835a85 EE NE OO PK
+W ids%s			ids.adb			ids.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D ids.ads		20140118001504 5d333c6d
+D memory.ads		20140118001508 beb066e8
+D memory.adb		20140118001510 400a9486
+D system.ads		20130417131036 90249111
+X 1 ada.ads
+16K9*Ada 19e8 6|1r6 2r5
+X 2 a-charac.ads
+16K13*Characters 18e19 6|1r10 2r9
+X 3 a-chahan.ads
+36K24*Handling 150e28 6|1w21 2r20
+49V13*Is_Upper{boolean} 6|17s10 31s10
+X 4 ids.ads
+4K9*Ids 20e8 5|1w6 2r5
+6R9*Id 18e14 5|6r28 8r29 6|13r28 29r29
+11V13*get_char{character} 6|17s20 18s27 20s29 31s20 32s18 34s20
+X 5 memory.ads
+4K9*Memory 10l5 10e11 6|4b14 38l5 38t11
+6V13*fetch{integer} 6>20 6|13b13 23l8 23t13
+6r20 var{4|6R9} 6|13b20 17r30 18r36 20r38
+8U14*store 8>21 8>33 6|29b14 36l8 36t13
+8r21 var{4|6R9} 6|29b21 31r30 32r27 34r29
+8i33 value{integer} 6|29b33 32r36 34r38
+X 6 memory.adb
+6a4 up_mem(integer) 18r19 32m10
+7a4 lower_mem(integer) 20r19 34m10
+14i7 value{integer} 18m10 20m10 22r14
+

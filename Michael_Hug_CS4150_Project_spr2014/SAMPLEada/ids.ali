@@ -1,0 +1,57 @@
+V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
+A -gnatA
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+
+U ids%b			ids.adb			a90dd07d NE OO PK
+W memory%s		memory.adb		memory.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
+
+U ids%s			ids.ads			400b21a0 EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-charac.ads		20130417131019 2d3ec45b
+D a-chahan.ads		20130417131019 1d381dcd
+D a-unccon.ads		20130417131022 f9eb8f06
+D ids.ads		20140118001504 5d333c6d
+D ids.adb		20140118001458 4a8e8af8
+D memory.ads		20140118001508 beb066e8
+D system.ads		20130417131036 90249111
+D s-assert.ads		20130417131028 a3a4e6ab
+D s-exctab.ads		20130417131029 66e51330
+D s-stalib.ads		20130417131032 f78bcf95
+X 1 ada.ads
+16K9*Ada 19e8 5|1r6 2r5
+X 2 a-charac.ads
+16K13*Characters 18e19 5|1r10 2r9
+X 3 a-chahan.ads
+36K24*Handling 150e28 5|1w21 2r20
+47V13*Is_Letter{boolean} 5|9s16
+X 5 ids.ads
+4K9*Ids 20l5 20e8 6|4b14 39l5 39t8
+6R9*Id 8r49 11r28 13r29 16c9 18e14 6|10r49 12r12 23r28 33r29
+8V13*create_id{6R9} 8>24 6|10b13 17l8 17t17
+8e24 ch{character} 9r27 6|10b24 15r17
+11V13*get_char{character} 11>23 6|23b13 27l8 27t16
+11r23 var{6R9} 6|23b23 26r14
+13V13*get_value{integer} 13>24 6|33b13 37l8 37t17
+13r24 var{6R9} 6|33b24 36r21
+17e7*ch{character} 6|15m11 26r18
+X 6 ids.adb
+12r7 var{5|6R9} 15m7 16r14
+X 7 memory.ads
+4K9*Memory 6|1w6 2r5 7|10e11
+6V13*fetch{integer} 6|36s14
+
