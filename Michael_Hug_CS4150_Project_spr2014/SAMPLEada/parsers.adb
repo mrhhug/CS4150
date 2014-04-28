@@ -1,20 +1,21 @@
 with Statements,Tokens,Expressions,Boolean_Expressions,Ids,Literal_Integers;
 use Statements, Tokens,Expressions,Boolean_Expressions,Ids,Literal_Integers;
+with Parsers; use Parsers;
 
 package body Parsers is
 
-   function getCodeBlock return Code_Block;
+   procedure getCodeBlock (p: in out Parser; cb:  out Code_Block);
    function isValidStartOfStatement(tok: in Token) return Boolean;
-   function getStatement return Statement_Access;
-   function getWhileStatement return Statement_Access;
-   function getUntilStatement return Statement_Access;
-   function getIfStatement return Statement_Access;
-   function getPrintStatement return Statement_Access;
-   function getAssignmentStatement return Statement_Access;
+   procedure getStatement (p: in out Parser; sa:  out Statement_Access);
+   procedure getWhileStatement (p: in out Parser; sa:  out Statement_Access);
+   procedure getUntilStatement (p: in out Parser; sa:  out Statement_Access);
+   procedure getIfStatement (p: in out Parser; sa:  out Statement_Access);
+   procedure getPrintStatement (p: in out Parser; sa:  out Statement_Access);
+   procedure getAssignmentStatement (p: in out Parser; sa:  out Statement_Access);
    procedure getExpression (p: in out Parser; ea:  out Expression_Access);
    procedure getArithmeticOperator (p: in out Parser; ao:  out Arithmetic_Operator);
    procedure getBooleanExpression (p: in out Parser; op:  out Boolean_Expression);
-   procedure getRelationalOperator (p: in out Parser; op:  out Relational_Operator);
+   procedure getRelationalOperator (p: in out Parser; ro:  out Relational_Operator);
    procedure match(tok: in Token; tt: in Token_Type);
    function LexemeToString (lex: in Lexeme) return String;
 
@@ -44,7 +45,7 @@ package body Parsers is
    begin
       get_next_token(p.lex,tok);
       match (tok, DEF_TOK);
-      cb := getCodeBlock;
+      getCodeBlock(p,cb);
       get_next_token(p.lex,tok);
       match (tok, END_TOK);
       get_next_token(p.lex,tok);
@@ -56,17 +57,20 @@ package body Parsers is
 
    ----------------------------------------------------------------------------
 
-   function getCodeBlock return Code_Block is
+   procedure getCodeBlock (p: in out Parser; cb:  out Code_Block) is
 
-      cb : Code_Block;
       stmt : Statement_Access;
       tok : Token;
 
    begin
-      stmt:= getStatement;
+      getStatement(p,stmt);
       add(cb,stmt);
-      --tok:= getlookaheadtoken;
-      return cb;
+      tok:=get_lookahead_token(p.lex);
+      while isValidStartOfStatement(tok) loop
+         getStatement(p,stmt);
+         add(cb,stmt);
+         tok:=get_lookahead_token(p.lex);
+      end loop;
    end getCodeBlock;
 
    ----------------------------------------------------------------------------
@@ -74,78 +78,76 @@ package body Parsers is
    function isValidStartOfStatement(tok: in Token) return Boolean is
 
    begin
-      return get_token_type(tok) = IF_TOK and get_token_type(tok) = ID_TOK and get_token_type(tok) = WHILE_TOK and
-      get_token_type(tok) = UNTIL_TOK and get_token_type(tok) = PUTS_TOK;
+      return get_token_type(tok) = IF_TOK or else get_token_type(tok) = ID_TOK or else get_token_type(tok) = WHILE_TOK or else
+      get_token_type(tok) = UNTIL_TOK or else get_token_type(tok) = PUTS_TOK;
    end isValidStartOfStatement;
 
    ----------------------------------------------------------------------------
 
-   function getStatement return Statement_Access is
+   procedure getStatement (p: in out Parser; sa:  out Statement_Access) is
 
-      stmt : Statement_Access;
       tok : Token;
 
    begin
-      --tok := getlookaheadtoken;
+      tok:=get_lookahead_token(p.lex);
       if get_token_type(tok)=ID_TOK then
-         stmt := getAssignmentStatement;
+         getAssignmentStatement(p,sa);
       elsif get_token_type(tok)=IF_TOK then
-         stmt := getIfStatement;
+         getIfStatement(p,sa);
       elsif get_token_type(tok)=PUTS_TOK then
-         stmt := getPrintStatement;
+         getPrintStatement(p,sa);
       elsif get_token_type(tok)=UNTIL_TOK then
-         stmt := getUntilStatement;
+         getUntilStatement(p,sa);
       elsif get_token_type(tok)=WHILE_TOK then
-         stmt := getWhileStatement;
+         getWhileStatement(p,sa);
       else
          raise parser_exception with "statement expected at row " & Positive'Image(get_row_number(tok)) & " and column " & Positive'Image(get_column_number(tok));
       end if;
-      return stmt;
    end getStatement;
 
    ----------------------------------------------------------------------------
 
-   function getWhileStatement return Statement_Access is
+   procedure getWhileStatement (p: in out Parser; sa:  out Statement_Access) is
 
       tok : Token;
       expr : Boolean_Expression;
       cb: Code_Block;
 
    begin
-      --tok := getNextToken;
+      get_next_token(p.lex,tok);
       match(tok,WHILE_TOK);
-      --expr:= getBooleanExpression;
-      --tok := getNextToken;
+      getBooleanExpression(p,expr);
+      get_next_token(p.lex,tok);
       match(tok,DO_TOK);
-      cb:= getCodeBlock;
-      --tok := getNextToken;
+      getCodeBlock(p,cb);
+      get_next_token(p.lex,tok);
       match(tok,END_TOK);
-      return create_while_statement(expr,cb);
+      sa:= create_while_statement(expr,cb);
    end getWhileStatement;
 
    ----------------------------------------------------------------------------
 
-   function getUntilStatement return Statement_Access is
+   procedure getUntilStatement (p: in out Parser; sa:  out Statement_Access) is
 
       tok : Token;
       expr : Boolean_Expression;
       cb: Code_Block;
 
    begin
-      --tok := getNextToken;
+      get_next_token(p.lex,tok);
       match(tok,UNTIL_TOK);
-      --expr:= getBooleanExpression;
-      --tok := getNextToken;
+      getBooleanExpression(p,expr);
+      get_next_token(p.lex,tok);
       match(tok,DO_TOK);
-      cb := getCodeBlock;
-      --tok := getNextToken;
+      getCodeBlock(p,cb);
+      get_next_token(p.lex,tok);
       match(tok,END_TOK);
-      return create_until_statement(expr,cb);
+      sa:= create_until_statement(expr,cb);
    end getUntilStatement;
 
    ----------------------------------------------------------------------------
 
-   function getIfStatement return Statement_Access is
+   procedure getIfStatement (p: in out Parser; sa:  out Statement_Access) is
 
       tok : Token;
       expr : Boolean_Expression;
@@ -153,50 +155,50 @@ package body Parsers is
       cb2: Code_Block;
 
    begin
-      --tok := getNextToken;
+      get_next_token(p.lex,tok);
       match (tok, IF_TOK);
-      --expr := getBooleanExpression;
-      --tok := getNextToken;
+      getBooleanExpression(p,expr);
+      get_next_token(p.lex,tok);
       match (tok, THEN_TOK);
-      cb1:= getCodeBlock;
-      --tok := getNextToken;
+      getCodeBlock(p,cb1);
+      get_next_token(p.lex,tok);
       match (tok, ELSE_TOK);
-      cb2:= getCodeBlock;
-      --tok := getNextToken;
+      getCodeBlock(p,cb2);
+      get_next_token(p.lex,tok);
       match (tok, END_TOK);
-      return create_if_statement(expr,cb1,cb2);
+      sa:= create_if_statement(expr,cb1,cb2);
    end getIfStatement;
 
    ----------------------------------------------------------------------------
 
-   function getPrintStatement return Statement_Access is
+   procedure getPrintStatement (p: in out Parser; sa:  out Statement_Access) is
 
       tok : Token;
       expr : Expression_Access;
 
    begin
-      --tok:= getNextToken;
+      get_next_token(p.lex,tok);
       match (tok, PUTS_TOK);
-      --expr:= getExpression;
-      return create_print_statement(expr);
+      getExpression(p,expr);
+      sa:= create_print_statement(expr);
    end getPrintStatement;
 
    ----------------------------------------------------------------------------
 
-   function getAssignmentStatement return Statement_Access is
+   procedure getAssignmentStatement (p: in out Parser; sa:  out Statement_Access) is
 
       tok : Token;
       var : Id;
       expr : Expression_Access;
 
    begin
-      --tok :=getNextToken;
+      get_next_token(p.lex,tok);
       match (tok, ID_TOK);
       var := create_id(get_lexeme(tok)(1));
-      --tok :=getNextToken;
+      get_next_token(p.lex,tok);
       match (tok, ASSIGN_OP);
-      --expr :=getExpression;
-      return create_assignment_statement(var, expr);
+      getExpression(p,expr);
+      sa := create_assignment_statement(var, expr);
    end getAssignmentStatement;
 
    ----------------------------------------------------------------------------
@@ -217,10 +219,10 @@ package body Parsers is
          get_next_token(p.lex,tok);
          ea := create_const_expression(create_literal_integer(Integer'Value (LexemeToString(get_lexeme(tok)))));
       else
-         -getArithmeticOperator(p,ao);
+         getArithmeticOperator(p,ao);
          getExpression(p,expr1);
          getExpression(p,expr2);
-         ea := create_binary_expression(op,expr1,expr2);
+         ea := create_binary_expression(ao,expr1,expr2);
       end if;
    end getExpression;
 
@@ -251,26 +253,26 @@ package body Parsers is
 
    begin
       getRelationalOperator(p,ro);
-      --expr1:= getExpression;
-      --expr2:= getExpression;
+      getExpression(p,expr1);
+      getExpression(p,expr2);
       op:= create_boolean_expression(ro, expr1, expr2);
    end getBooleanExpression;
 
    ----------------------------------------------------------------------------
 
-   procedure getRelationalOperator (p: in out Parser; op:  out Relational_Operator) is
+   procedure getRelationalOperator (p: in out Parser; ro: out Relational_Operator) is
 
       tok : Token;
 
    begin
       get_next_token(p.lex,tok);
       case get_token_type(tok) is
-         when NE_TOK => op:=NE_OP;
-         when EQ_TOK => op:=EQ_OP;
-         when LT_TOK => op:=LT_OP;
-         when LE_TOK => op:=LE_OP;
-         when GT_TOK => op:=GT_OP;
-         when GE_TOK => op:=GE_OP;
+         when NE_TOK => ro:=NE_OP;
+         when EQ_TOK => ro:=EQ_OP;
+         when LT_TOK => ro:=LT_OP;
+         when LE_TOK => ro:=LE_OP;
+         when GT_TOK => ro:=GT_OP;
+         when GE_TOK => ro:=GE_OP;
          when others => raise parser_exception with "relational operator expected at row " & Positive'Image(get_row_number(tok)) & " and column " & Positive'Image(get_column_number(tok));
       end case;
    end getRelationalOperator;
