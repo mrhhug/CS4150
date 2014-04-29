@@ -4,7 +4,7 @@ with Parsers; use Parsers;
 
 package body Parsers is
 
-   procedure getCodeBlock (p: in out Parser; cb:  out Code_Block);
+   --procedure getCodeBlock (p: in out Parser; cb:  out Code_Block);
    function isValidStartOfStatement(tok: in Token) return Boolean;
    procedure getStatement (p: in out Parser; sa:  out Statement_Access);
    procedure getWhileStatement (p: in out Parser; sa:  out Statement_Access);
