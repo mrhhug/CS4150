@@ -1,4 +1,10 @@
 V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
 A -gnatA
 P ZX
 

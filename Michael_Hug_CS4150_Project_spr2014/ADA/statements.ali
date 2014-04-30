@@ -1,4 +1,10 @@
 V "GNAT Lib v2013"
+A -fstack-check=specific
+A -gnato
+A -gnatVn
+A -g
+A -gnata
+A -gnat12
 A -gnatA
 P SS ZX
 
@@ -22,9 +28,9 @@ W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-W interfaces%s		interfac.ads		interfac.ali
 W memory%s		memory.adb		memory.ali
 W system%s		system.ads		system.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
 W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
@@ -47,6 +53,7 @@ W boolean_expressions%s	boolean_expressions.adb	boolean_expressions.ali
 W expressions%s		expressions.adb		expressions.ali
 W ids%s			ids.adb			ids.ali
 W system%s		system.ads		system.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
 W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
 W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -82,6 +89,7 @@ D memory.ads		20140118001508 beb066e8
 D statements.ads	20140118001502 7f0eb1da
 D statements.adb	20140118001506 516e5a13
 D system.ads		20130417131036 90249111
+D s-assert.ads		20130417131028 a3a4e6ab
 D s-crtl.ads		20130417131029 dfcfca61
 D s-exctab.ads		20130417131029 66e51330
 D s-ficobl.ads		20130417131029 55a71d43
